@@ -1,0 +1,41 @@
+{
+  "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+  },
+  "extends": [ 
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "prettier"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "babelOptions": {
+        "presets": ["@babel/preset-react"]
+     },
+    "requireConfigFile": false,
+    "jsx": true,
+      "ecmaVersion": 11,
+      "sourceType": "module"
+  },
+  "plugins": [
+      "react", 
+      "prettier"
+  ],
+  "rules": {
+      "prettier/prettier": "off",
+      "react/prop-types": 0,
+      "max-len": ["error", { "code": 200 }],
+      "linebreak-style": "off",
+      "default-param-last": "off",
+      "no-unused-expressions": "off",
+      "array-callback-return": "off",
+      "consistent-return": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "import/no-unresolved": "off",
+      "react/self-closing-comp": 0,
+      "comma-dangle": "off",
+      "operator-linebreak":"off"
+  }
+}
