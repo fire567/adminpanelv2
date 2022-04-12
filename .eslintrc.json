@@ -35,7 +35,6 @@
       "import/no-unresolved": "off",
       "react/self-closing-comp": 0,
       "comma-dangle": "off",
-      "operator-linebreak":"off",
-      "no-unused-vars": "warn"
+      "operator-linebreak":"off"
   }
 }

@@ -1,10 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { postLogout, postAuth } from '../../Redux/actions';
+import Sidebar from '../../Component/Sidebar/Sidebar';
 import { useHistory } from 'react-router-dom';
+import classes from './MainPage.module.css';
 
-const MainPage = () => {
+const MainPage = ({ match }) => {
   const [cookies, setCookie, removeCookies] = useCookies(['access']);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,7 +25,11 @@ const MainPage = () => {
     location.reload();
   };
 
-  return <div onClick={() => logOut()}>Выход</div>;
+  return (
+    <div className={classes.page_form}>
+      <Sidebar match={match} />
+    </div>
+  );
 };
 
 export default MainPage;

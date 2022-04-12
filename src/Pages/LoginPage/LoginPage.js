@@ -33,7 +33,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (cookies.access) {
-      history.push('/main-page/cars-list');
+      history.push('/main-page/orders');
     }
   }, [cookies]);
 
