@@ -1,25 +1,28 @@
 import React, { useEffect } from 'react';
-import { withCookies } from 'react-cookie';
 import { useDispatch } from 'react-redux';
-import { postAuth } from '../../Redux/actions';
+import { useCookies } from 'react-cookie';
+import { postLogout, postAuth } from '../../Redux/actions';
 import { useHistory } from 'react-router-dom';
 
-const MainPage = ({ cookies }) => {
+const MainPage = () => {
+  const [cookies, setCookie, removeCookies] = useCookies(['access']);
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(postAuth(null, null));
-    if (!cookies.cookies.access) {
+    if (!cookies.access) {
       history.push('/');
     }
-  }, [cookies.cookies]);
+  }, [cookies]);
 
   const logOut = () => {
-    cookies.remove('access');
+    dispatch(postAuth(null, null));
+    dispatch(postLogout(cookies));
+    removeCookies('access', { path: '/' });
+    location.reload();
   };
 
   return <div onClick={() => logOut()}>Выход</div>;
 };
 
-export default withCookies(MainPage);
+export default MainPage;

@@ -36,3 +36,11 @@ export const postAuth = (mail, password) => async (dispatch) => {
     });
   }
 };
+
+export const postLogout = (token) => async () => {
+  await API.post('auth/logout', token, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

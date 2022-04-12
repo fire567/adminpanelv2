@@ -24,7 +24,6 @@
       "prettier"
   ],
   "rules": {
-      "prettier/prettier": "off",
       "react/prop-types": 0,
       "max-len": ["error", { "code": 200 }],
       "linebreak-style": "off",
@@ -36,6 +35,7 @@
       "import/no-unresolved": "off",
       "react/self-closing-comp": 0,
       "comma-dangle": "off",
-      "operator-linebreak":"off"
+      "operator-linebreak":"off",
+      "no-unused-vars": "warn"
   }
 }
