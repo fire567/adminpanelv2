@@ -1,0 +1,128 @@
+
+.header{
+  height: 67px;
+  background: #FFFFFF;
+  box-shadow: 0px 2.5px 9.5px 0px rgba(90, 97, 105, 0.12);
+  display: flex;
+  align-items: center;
+}
+
+.search_icon{
+  background: url('../../assets/search.svg') no-repeat;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  margin-left: 27px;
+}
+
+.search_bar{
+  flex: auto;
+  outline: none;
+  border: none;
+  text-indent: 50px;
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: -0.0928572px;
+  color: #767F9D;
+}
+
+.notifications{
+  width: 70px;
+  height: inherit;
+  box-shadow: 0.5px 0px 0px #CACEDB, -0.5px 0px 0px #CACEDB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification_bell{
+  width: 17px;
+  height: 21px;
+  background: url('../../assets/Notification-bell.svg');
+}
+
+.notification_count{
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: url('../../assets/Notification-count.svg');
+  margin-top: 12px;
+  margin-left: 20px;
+}
+
+.user{
+  position: relative;
+  display: flex;
+  width: 218px;
+  height: inherit;
+  align-items: center;
+  padding: 0 29px 0 25px;
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: -0.471429px;
+  color: #5A6169;
+}
+
+.avatar{
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  background: url('../../assets/user-avatar.svg') no-repeat;
+}
+
+.user_name{
+  margin-left: 13px;
+}
+
+.popup_btn {
+  cursor: pointer;
+  margin-top: 5px;
+  content: ''; 
+  right: 29px;
+  position: absolute;
+  border: 6px solid transparent;
+  border-top: 6px solid #ABB6BF;
+}
+
+.popup{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 57px;
+  width: 272px;
+  z-index: 5;
+  top: 67px;
+  right: 0;
+  background-color: #FFFFFF;;
+}
+
+.exit_btn{
+  cursor: pointer;
+  outline: none;
+  background: #C4183C;
+  border: 0.5px solid #007BFF;
+  width: 95px;
+  height: 29px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: -0.345714px;
+  color: #FFFFFF;
+}
+
+.exit_btn:hover {
+  filter: brightness(90%);
+}
+
+.exit_btn:active {
+  filter: brightness(80%);
+}

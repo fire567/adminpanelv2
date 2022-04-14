@@ -5,11 +5,12 @@ import { ReactSVG } from 'react-svg';
 import { useHistory } from 'react-router-dom';
 import classes from './Sidebar.module.css';
 
-const Sidebar = ({ match }) => {
+const Sidebar = ({ match, setCurrentLink }) => {
   const history = useHistory();
 
   const linkHandler = (link) => {
     history.push(`${link.path}`);
+    setCurrentLink(link.name);
   };
 
   return (

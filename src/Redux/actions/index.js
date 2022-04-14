@@ -44,3 +44,19 @@ export const postLogout = (token) => async () => {
     },
   });
 };
+
+export const getOrders = (token) => async (dispatch) => {
+  const result = await API.get('db/order', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    params: {
+      limit: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_ORDERS',
+    payload: result.data,
+  });
+};
