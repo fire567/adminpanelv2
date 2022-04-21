@@ -106,23 +106,25 @@
   position: absolute;
 }
 
-.close {
-  position: absolute;
-  height: 32px;
-  cursor: pointer;
-  right: 30px;
-  bottom: 20px;
-  }
-  .close:before, .close:after {
-  position: absolute;
-  content: ' ';
-  height: 33px;
-  width: 2px;
-  background-color:#3D5170;;
-  }
-  .close:before {
-  transform: rotate(45deg);
-  }
-  .close:after {
-  transform: rotate(-45deg);
-  }
+@media (max-width: 1200px) {
+  .close {
+    position: absolute;
+    height: 32px;
+    cursor: pointer;
+    right: 30px;
+    bottom: 20px;
+    }
+    .close:before, .close:after {
+    position: absolute;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color:#3D5170;;
+    }
+    .close:before {
+    transform: rotate(45deg);
+    }
+    .close:after {
+    transform: rotate(-45deg);
+    } 
+}
