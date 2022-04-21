@@ -1,14 +1,30 @@
 {
   "files": {
-    "main.css": "/adminpanelv2/static/css/main.5b9bece1.css",
-    "main.js": "/adminpanelv2/static/js/main.c2db6982.js",
+    "main.css": "/adminpanelv2/static/css/main.1f29679f.css",
+    "main.js": "/adminpanelv2/static/js/main.94af7706.js",
+    "static/media/Roboto-Medium.ttf": "/adminpanelv2/static/media/Roboto-Medium.7429a63c09f79a1760b0.ttf",
+    "static/media/Roboto-Regular.ttf": "/adminpanelv2/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/Roboto-Bold.ttf": "/adminpanelv2/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
+    "static/media/Roboto-Light.ttf": "/adminpanelv2/static/media/Roboto-Light.8be2d1487420548b3b8d.ttf",
+    "static/media/user-avatar.svg": "/adminpanelv2/static/media/user-avatar.8fc82246cd19e821b0ee.svg",
+    "static/media/Notification-count.svg": "/adminpanelv2/static/media/Notification-count.d7bfc1d21c7f21c0e202.svg",
     "index.html": "/adminpanelv2/index.html",
+    "static/media/search.svg": "/adminpanelv2/static/media/search.c8b5b3af1de2fdaa3efe.svg",
+    "static/media/logo-icon.svg": "/adminpanelv2/static/media/logo-icon.3681ccfbe98b43c03ca4.svg",
     "static/media/logo.svg": "/adminpanelv2/static/media/logo.42a15795474b2ec8ad53.svg",
-    "main.5b9bece1.css.map": "/adminpanelv2/static/css/main.5b9bece1.css.map",
-    "main.c2db6982.js.map": "/adminpanelv2/static/js/main.c2db6982.js.map"
+    "static/media/loading.svg": "/adminpanelv2/static/media/loading.61a1500b3bffa3a195e6.svg",
+    "static/media/Notification-bell.svg": "/adminpanelv2/static/media/Notification-bell.4a73f89d5ed8c6ab9e4f.svg",
+    "static/media/rates.svg": "/adminpanelv2/static/media/rates.3b713945d3e3400866e19a4cf3d55fd0.svg",
+    "static/media/cars-list.svg": "/adminpanelv2/static/media/cars-list.79e71b5f174997f176f83df7468b98b3.svg",
+    "static/media/places.svg": "/adminpanelv2/static/media/places.bf6a9e067bb8720e2e279442bb92f163.svg",
+    "static/media/error.svg": "/adminpanelv2/static/media/error.49882672c62169d4716570d11f6688be.svg",
+    "static/media/orders.svg": "/adminpanelv2/static/media/orders.092318e7670b44930f0c53efa083fdba.svg",
+    "static/media/cities.svg": "/adminpanelv2/static/media/cities.877ec2366577336c88d0105d6a0fde85.svg",
+    "main.1f29679f.css.map": "/adminpanelv2/static/css/main.1f29679f.css.map",
+    "main.94af7706.js.map": "/adminpanelv2/static/js/main.94af7706.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b9bece1.css",
-    "static/js/main.c2db6982.js"
+    "static/css/main.1f29679f.css",
+    "static/js/main.94af7706.js"
   ]
 }
