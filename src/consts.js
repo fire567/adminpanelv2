@@ -22,3 +22,9 @@ export const links = [
   },
   { id: '7', name: 'Статусы заказов', svg: error, path: 'orders-status' },
 ];
+
+export const extra = [
+  { id: 0, name: 'Полный бак' },
+  { id: 2, name: 'Детское кресло' },
+  { id: 3, name: 'Правый руль' },
+];

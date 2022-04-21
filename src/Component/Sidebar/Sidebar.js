@@ -5,7 +5,7 @@ import { ReactSVG } from 'react-svg';
 import { useHistory } from 'react-router-dom';
 import classes from './Sidebar.module.css';
 
-const Sidebar = ({ match, setCurrentLink }) => {
+const Sidebar = ({ match, setCurrentLink, isOpened, setIsOpened }) => {
   const history = useHistory();
 
   const linkHandler = (link) => {
@@ -13,8 +13,14 @@ const Sidebar = ({ match, setCurrentLink }) => {
     setCurrentLink(link.name);
   };
 
+  const closeMunuHandler = () => {
+    setIsOpened(false);
+  };
+
   return (
-    <div className={classes.sidebar_form}>
+    <div
+      className={isOpened ? classes.sidebar_form_active : classes.sidebar_form}
+    >
       <header className={classes.header}>
         <div className={classes.logo} />
         <div className={classes.product_name}>Need for car</div>
@@ -38,6 +44,7 @@ const Sidebar = ({ match, setCurrentLink }) => {
           </li>
         ))}
       </div>
+      <div className={classes.close} onClick={closeMunuHandler} />
     </div>
   );
 };

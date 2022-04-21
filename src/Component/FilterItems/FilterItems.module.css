@@ -7,6 +7,12 @@
   justify-content: space-between;
 }
 
+@media (max-width: 750px) {
+  .filter_form{
+    padding: 0 5px;
+  }
+}
+
 .inputs{
   display: flex;
 }
@@ -23,10 +29,45 @@
   cursor: pointer;
 }
 
+@media (max-width: 750px) {
+  .accept{
+    width: 80px
+  }
+}
+
+
 .accept:hover {
   filter: brightness(90%);
 }
 
 .accept:active {
+  filter: brightness(80%);
+}
+
+.decline{
+  background: #C4183C;
+  border: 0.5px solid #007BFF;
+  box-sizing: border-box;
+  border-radius: 4px;
+  outline: none;
+  color: white;
+  width: 95px;
+  height: 29px;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+@media (max-width: 750px) {
+  .decline{
+    width: 80px;
+    margin-right: 6px;
+  }
+}
+
+.decline:hover {
+  filter: brightness(90%);
+}
+
+.decline:active {
   filter: brightness(80%);
 }

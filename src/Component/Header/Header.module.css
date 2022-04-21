@@ -7,6 +7,13 @@
   align-items: center;
 }
 
+@media (max-width: 1200px) {
+  .header{
+    width: 100vw;
+  }
+}
+
+
 .search_icon{
   background: url('../../assets/search.svg') no-repeat;
   width: 14px;
@@ -99,6 +106,12 @@
   top: 67px;
   right: 0;
   background-color: #FFFFFF;;
+}
+
+@media (max-width: 750px) {
+  .popup{
+    width: inherit;
+  }
 }
 
 .exit_btn{

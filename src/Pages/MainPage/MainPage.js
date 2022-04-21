@@ -7,14 +7,34 @@ import classes from './MainPage.module.css';
 
 const MainPage = ({ match }) => {
   const [currentLink, setCurrentLink] = useState('Заказы');
+  const [isOpened, setIsOpened] = useState(false);
+
+  const isOpenHandler = () => {
+    setIsOpened(true);
+  };
 
   return (
     <div className={classes.page_form}>
-      <Sidebar match={match} setCurrentLink={setCurrentLink} />
+      <Sidebar
+        match={match}
+        setCurrentLink={setCurrentLink}
+        setIsOpened={setIsOpened}
+        isOpened={isOpened}
+      />
       <div className={classes.content_block}>
         <Header />
         <div className={classes.content}>
           <Content currentLink={currentLink} />
+          <div
+            className={
+              isOpened ? classes.burger_btn_hidden : classes.burger_btn
+            }
+            onClick={isOpenHandler}
+          >
+            <div className={classes.burger} />
+            <div className={classes.burger} />
+            <div className={classes.burger} />
+          </div>
         </div>
         <Footer />
       </div>

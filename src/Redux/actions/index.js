@@ -45,18 +45,158 @@ export const postLogout = (token) => async () => {
   });
 };
 
-export const getOrders = (token) => async (dispatch) => {
-  const result = await API.get('db/order', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    params: {
-      limit: 1,
-    },
-  });
+export const getOrders = (token, page, city, rateId) => async (dispatch) => {
+  if (token) {
+    if (!city && !rateId) {
+      const result = await API.get('db/order', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 4,
+          page,
+        },
+      });
+
+      dispatch({
+        type: 'GET_ORDERS',
+        payload: result.data,
+      });
+    } else if (city && !rateId) {
+      const result = await API.get('db/order', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 4,
+          page,
+          cityId: city,
+        },
+      });
+
+      dispatch({
+        type: 'GET_ORDERS',
+        payload: result.data,
+      });
+    } else if (!city && rateId) {
+      const result = await API.get('db/order', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 4,
+          page,
+          rateId: rateId,
+        },
+      });
+
+      dispatch({
+        type: 'GET_ORDERS',
+        payload: result.data,
+      });
+    } else if (city && rateId) {
+      const result = await API.get('db/order', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 4,
+          page,
+          rateId,
+          cityId: city,
+        },
+      });
+
+      dispatch({
+        type: 'GET_ORDERS',
+        payload: result.data,
+      });
+    }
+  } else {
+    dispatch({
+      type: 'GET_ORDERS',
+      payload: null,
+    });
+  }
+};
+
+export const getOrdersPages = (token, city, rateId) => async (dispatch) => {
+  let result = null;
+  if (!city && !rateId) {
+    result = await API.get('db/order', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        limit: 1,
+        page: 1,
+      },
+    });
+  } else if (city && !rateId) {
+    result = await API.get('db/order', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        limit: 1,
+        page: 1,
+        cityId: city,
+      },
+    });
+  } else if (!city && rateId) {
+    result = await API.get('db/order', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        limit: 1,
+        page: 1,
+        rateId,
+      },
+    });
+  } else if (city && rateId) {
+    result = await API.get('db/order', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        limit: 1,
+        page: 1,
+        cityId: city,
+        rateId,
+      },
+    });
+  }
 
   dispatch({
-    type: 'GET_ORDERS',
+    type: 'GET_ORDERSPAGES',
+    payload: result.data.count,
+  });
+};
+
+export const getCities = () => async (dispatch) => {
+  const result = await API.get('db/city');
+
+  dispatch({
+    type: 'GET_CITIES',
+    payload: result.data,
+  });
+};
+
+export const getRateTypeId = () => async (dispatch) => {
+  const result = await API.get('db/rateType');
+
+  dispatch({
+    type: 'GET_RATETYPES',
+    payload: result.data,
+  });
+};
+
+export const getRates = () => async (dispatch) => {
+  const result = await API.get('db/rate');
+
+  dispatch({
+    type: 'GET_RATES',
     payload: result.data,
   });
 };

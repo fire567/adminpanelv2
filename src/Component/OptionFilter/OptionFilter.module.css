@@ -25,12 +25,26 @@
   text-indent: 14px;
 }
 
+@media (max-width: 750px) {
+  .input{
+    width: 66px;
+    text-indent: 5px;
+  }
+}
+
 .options{
   position: absolute;
   background-color: #FFFFFF;
   border: 1px solid #BECAD6;
   width: 110px;
   height: fit-content;
+}
+
+@media (max-width: 750px) {
+  .options{
+    width: 66px;
+    z-index: 50;
+  }
 }
 
 .current_option{

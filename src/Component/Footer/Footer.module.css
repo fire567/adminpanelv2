@@ -8,10 +8,24 @@
   align-items: center;
 }
 
+@media (max-width: 1200px) {
+  .footer{
+    width: 100vw;
+  }
+}
+
 .links{
   display: flex;
   list-style: none;
   margin-left: 27px;
+}
+
+@media (max-width: 750px) {
+  .links{
+    flex-direction: column;
+    height: 50px;
+    justify-content: space-around;
+  }
 }
 
 .link{
@@ -25,6 +39,12 @@
 
 .link:not(:first-child){
   margin-left: 16px;
+}
+
+@media (max-width: 750px) {
+  .link:not(:first-child){
+    margin: 0;
+  }
 }
 
 .copiright{
