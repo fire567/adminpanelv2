@@ -16,11 +16,10 @@ tbody{
 }
 
 ::-webkit-scrollbar {
-  width: 9px; /* ширина для вертикального скролла */
+  width: 9px;
   background-color: white;
 }
 
-/* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
   background-color: #78b7fa;
   border-radius: 9em;
