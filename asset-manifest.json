@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/adminpanelv2/static/css/main.799d8c6d.css",
-    "main.js": "/adminpanelv2/static/js/main.94af7706.js",
+    "main.css": "/adminpanelv2/static/css/main.2ac875ca.css",
+    "main.js": "/adminpanelv2/static/js/main.7563c595.js",
     "static/media/Roboto-Medium.ttf": "/adminpanelv2/static/media/Roboto-Medium.7429a63c09f79a1760b0.ttf",
     "static/media/Roboto-Regular.ttf": "/adminpanelv2/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
     "static/media/Roboto-Bold.ttf": "/adminpanelv2/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
@@ -20,11 +20,11 @@
     "static/media/error.svg": "/adminpanelv2/static/media/error.49882672c62169d4716570d11f6688be.svg",
     "static/media/orders.svg": "/adminpanelv2/static/media/orders.092318e7670b44930f0c53efa083fdba.svg",
     "static/media/cities.svg": "/adminpanelv2/static/media/cities.877ec2366577336c88d0105d6a0fde85.svg",
-    "main.799d8c6d.css.map": "/adminpanelv2/static/css/main.799d8c6d.css.map",
-    "main.94af7706.js.map": "/adminpanelv2/static/js/main.94af7706.js.map"
+    "main.2ac875ca.css.map": "/adminpanelv2/static/css/main.2ac875ca.css.map",
+    "main.7563c595.js.map": "/adminpanelv2/static/js/main.7563c595.js.map"
   },
   "entrypoints": [
-    "static/css/main.799d8c6d.css",
-    "static/js/main.94af7706.js"
+    "static/css/main.2ac875ca.css",
+    "static/js/main.7563c595.js"
   ]
 }
