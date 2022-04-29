@@ -200,3 +200,248 @@ export const getRates = () => async (dispatch) => {
     payload: result.data,
   });
 };
+
+export const getCars = (page) => async (dispatch) => {
+  if (page === null) {
+    dispatch({
+      type: 'GET_CARS',
+      payload: null,
+    });
+  } else {
+    const result = await API.get('db/car', {
+      params: {
+        limit: 5,
+        page,
+      },
+    });
+
+    dispatch({
+      type: 'GET_CARS',
+      payload: result.data,
+    });
+  }
+};
+
+export const getCarsPages = () => async (dispatch) => {
+  const result = await API.get('db/car', {
+    params: {
+      limit: 5,
+      page: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_CARSPAGES',
+    payload: result.data.count,
+  });
+};
+
+export const getCitiesList = (page) => async (dispatch) => {
+  if (page === null) {
+    dispatch({
+      type: 'GET_CITIESLIST',
+      payload: null,
+    });
+  } else {
+    const result = await API.get('db/city', {
+      params: {
+        limit: 5,
+        page,
+      },
+    });
+
+    dispatch({
+      type: 'GET_CITIESLIST',
+      payload: result.data,
+    });
+  }
+};
+
+export const getCitiesPages = () => async (dispatch) => {
+  const result = await API.get('db/city', {
+    params: {
+      limit: 1,
+      page: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_CITIESPAGES',
+    payload: result.data.count,
+  });
+};
+
+export const getPoints = (page) => async (dispatch) => {
+  if (page === null) {
+    dispatch({
+      type: 'GET_POINTS',
+      payload: null,
+    });
+  } else {
+    const result = await API.get('db/point', {
+      params: {
+        limit: 5,
+        page,
+      },
+    });
+
+    dispatch({
+      type: 'GET_POINTS',
+      payload: result.data,
+    });
+  }
+};
+
+export const getPointsPages = () => async (dispatch) => {
+  const result = await API.get('db/point', {
+    params: {
+      limit: 1,
+      page: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_POINTPAGES',
+    payload: result.data.count,
+  });
+};
+
+export const getRatesList = (page) => async (dispatch) => {
+  if (page === null) {
+    dispatch({
+      type: 'GET_RATESLIST',
+      payload: null,
+    });
+  } else {
+    const result = await API.get('db/rate', {
+      params: {
+        limit: 5,
+        page,
+      },
+    });
+
+    dispatch({
+      type: 'GET_RATESLIST',
+      payload: result.data,
+    });
+  }
+};
+
+export const getRatesPages = () => async (dispatch) => {
+  const result = await API.get('db/rate', {
+    params: {
+      limit: 1,
+      page: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_RATESPAGES',
+    payload: result.data.count,
+  });
+};
+
+export const getRatesTypeList = (page) => async (dispatch) => {
+  if (page === null) {
+    dispatch({
+      type: 'GET_RATESTYPELIST',
+      payload: null,
+    });
+  } else {
+    const result = await API.get('db/rateType', {
+      params: {
+        limit: 5,
+        page,
+      },
+    });
+
+    dispatch({
+      type: 'GET_RATESTYPELIST',
+      payload: result.data,
+    });
+  }
+};
+
+export const getRatesTypePages = () => async (dispatch) => {
+  const result = await API.get('db/rateType', {
+    params: {
+      limit: 1,
+      page: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_RATESTYPEPAGES',
+    payload: result.data.count,
+  });
+};
+
+export const getCarCategories = (page) => async (dispatch) => {
+  if (page === null) {
+    dispatch({
+      type: 'GET_CARCATEGORIES',
+      payload: null,
+    });
+  } else {
+    const result = await API.get('db/category', {
+      params: {
+        limit: 5,
+        page,
+      },
+    });
+
+    dispatch({
+      type: 'GET_CARCATEGORIES',
+      payload: result.data,
+    });
+  }
+};
+
+export const getCarCategoriesPages = () => async (dispatch) => {
+  const result = await API.get('db/category', {
+    params: {
+      limit: 1,
+      page: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_CARCATEGORIESPAGES',
+    payload: result.data.count,
+  });
+};
+
+export const getOrderStatuses = (page) => async (dispatch) => {
+  if (page === null) {
+    dispatch({
+      type: 'GET_ORDERSTATUSES',
+      payload: null,
+    });
+  } else {
+    const result = await API.get('db/orderStatus', {
+      params: {
+        limit: 5,
+        page,
+      },
+    });
+
+    dispatch({
+      type: 'GET_ORDERSTATUSES',
+      payload: result.data,
+    });
+  }
+};
+
+export const getOrderStatusesPages = () => async (dispatch) => {
+  const result = await API.get('db/orderStatus', {
+    params: {
+      limit: 1,
+      page: 1,
+    },
+  });
+
+  dispatch({
+    type: 'GET_ORDERSTATUSESPAGES',
+    payload: result.data.count,
+  });
+};

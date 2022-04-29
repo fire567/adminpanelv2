@@ -28,3 +28,51 @@ export const extra = [
   { id: 2, name: 'Детское кресло' },
   { id: 3, name: 'Правый руль' },
 ];
+
+export const carSections = [
+  { id: 0, text: 'Модель' },
+  { id: 1, text: 'Мин. цена' },
+  { id: 2, text: 'Макс.цена' },
+  { id: 3, text: 'Изменить' },
+  { id: 4, text: 'Удалить' },
+];
+
+export const citySections = [
+  { id: 0, text: 'Город' },
+  { id: 1, text: 'Изменить' },
+  { id: 2, text: 'Удалить' },
+];
+
+export const pointSections = [
+  { id: 0, text: 'Город' },
+  { id: 1, text: 'Адрес' },
+  { id: 1, text: 'Изменить' },
+  { id: 2, text: 'Удалить' },
+];
+
+export const tariffSections = [
+  { id: 0, text: 'Название' },
+  { id: 1, text: 'Цена' },
+  { id: 1, text: 'Изменить' },
+  { id: 2, text: 'Удалить' },
+];
+
+export const tariffsTypeSections = [
+  { id: 0, text: 'Название' },
+  { id: 1, text: 'Длительность' },
+  { id: 1, text: 'Изменить' },
+  { id: 2, text: 'Удалить' },
+];
+
+export const CarCategorySections = [
+  { id: 0, text: 'Название' },
+  { id: 1, text: 'Описание' },
+  { id: 2, text: 'Изменить' },
+  { id: 3, text: 'Удалить' },
+];
+
+export const orderStatusessections = [
+  { id: 0, text: 'Название' },
+  { id: 1, text: 'Изменить' },
+  { id: 2, text: 'Удалить' },
+];

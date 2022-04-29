@@ -27,6 +27,7 @@ const Orders = () => {
   const [citiesFilter, setCitiesFilter] = useState(null);
   const [rateTypeFilter, setRateTypeFilter] = useState(null);
   const [isApplied, setIsApplied] = useState(false);
+  const [isDecline, setIsDecline] = useState(false);
   const [rateFilter, setRateFilter] = useState(null);
 
   useEffect(() => {
@@ -50,8 +51,10 @@ const Orders = () => {
     if (cities && rateTypes && rates) {
       const ratesFilter = rateTypes.data.filter((item) => {
         for (let i = 0; i < rates.data.length; i++) {
-          if (item.id === rates.data[i].rateTypeId.id) {
-            return item;
+          if (item.id && rates.data[i].rateTypeId) {
+            if (item.id === rates.data[i].rateTypeId.id) {
+              return item;
+            }
           }
         }
       });
@@ -63,10 +66,17 @@ const Orders = () => {
   }, [cities, rateTypes, rates]);
 
   useEffect(() => {
+    setCitiesFilter(null);
+    setRateFilter(null);
+    setPageCount(1);
+    dispatch(getOrders(cookies.access, pageCount, null, null));
+  }, [isDecline]);
+
+  useEffect(() => {
     let ratesFilter = null;
     if (rateTypeFilter) {
       ratesFilter = rates.data.filter((item) => {
-        return item.rateTypeId.id === rateTypeFilter;
+        return item.rateTypeId && item.rateTypeId.id === rateTypeFilter;
       });
     }
 
@@ -97,6 +107,8 @@ const Orders = () => {
         setIsApplied={setIsApplied}
         isApplied={isApplied}
         setPageCount={setPageCount}
+        setIsDecline={setIsDecline}
+        isDecline={isDecline}
       />
       {orders ? (
         <div className={classes.content}>

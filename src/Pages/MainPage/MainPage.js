@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../../Component/Sidebar/Sidebar';
 import Header from '../../Component/Header/Header';
 import Footer from '../../Component/Footer/Footer';
 import Content from '../../Component/Content/Content';
 import classes from './MainPage.module.css';
+import { links } from '../../consts';
 
 const MainPage = ({ match }) => {
-  const [currentLink, setCurrentLink] = useState('Заказы');
+  const [currentLink, setCurrentLink] = useState(null);
   const [isOpened, setIsOpened] = useState(false);
+
+  useEffect(() => {
+    links.map((link) => {
+      if (link.path === match.params.name) {
+        setCurrentLink(link.name);
+      }
+    });
+  }, [match]);
 
   const isOpenHandler = () => {
     setIsOpened(true);

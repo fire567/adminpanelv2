@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classes from './OptionFilter.module.css';
 
-const OptionFilter = ({ items, setItem, isEmpty, setIsEmpty }) => {
+const OptionFilter = ({ items, setItem }) => {
   const [isPopUp, setIsPopUp] = useState(false);
   const [label, setLabel] = useState(null);
 
   const popUpHandler = () => {
     setIsPopUp(!isPopUp);
   };
-
-  useEffect(() => {
-    if (isEmpty) {
-      setIsEmpty(null);
-      setLabel(null);
-    }
-  }, [isEmpty]);
 
   const currentOptionHandler = (item) => {
     setLabel(item.name);
