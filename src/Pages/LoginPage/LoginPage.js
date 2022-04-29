@@ -68,6 +68,7 @@ const LoginPage = () => {
             error={mailError}
             hideError={setMailError}
             setInvalid={setInvalid}
+            type={'text'}
           />
           <LoginInput
             label={'Пароль'}
@@ -77,6 +78,7 @@ const LoginPage = () => {
             error={passwordError}
             hideError={setPasswordError}
             setInvalid={setInvalid}
+            type={'password'}
           />
         </div>
         <div className={classes.buttons_form}>
