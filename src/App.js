@@ -19,6 +19,11 @@ const App = () => {
           <div className={classes.app}>
             <Route path='/' component={LoginPage} exact />
             <Route path='/main-page/:name' component={MainPage} exact />
+            <Route
+              path='/main-page/:name/:action/:id'
+              component={MainPage}
+              exact
+            />
           </div>
         </CookiesProvider>
       </Provider>

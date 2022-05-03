@@ -2,9 +2,12 @@ import classNames from 'classnames';
 import React from 'react';
 import Moment from 'react-moment';
 import { extra } from '../../../../consts';
+import { useHistory } from 'react-router-dom';
 import classes from './CurrentOrder.module.css';
 
 const CurrentOrder = ({ item }) => {
+  const history = useHistory();
+
   const checkboxStyle = (extra) => {
     if (extra.id === 0 && item.isFullTank === true) {
       return classes.opt_extra_form_active;
@@ -15,6 +18,10 @@ const CurrentOrder = ({ item }) => {
     }
 
     return classes.opt_extra_form;
+  };
+
+  const onChangeLink = () => {
+    history.push(`orders/change/${item.id}`);
   };
 
   return (
@@ -62,7 +69,10 @@ const CurrentOrder = ({ item }) => {
           <div className={classes.decline_icon} />
           Отмена
         </button>
-        <button className={classNames(classes.button, classes.change)}>
+        <button
+          className={classNames(classes.button, classes.change)}
+          onClick={onChangeLink}
+        >
           <div className={classes.change_icon} />
           Изменить
         </button>

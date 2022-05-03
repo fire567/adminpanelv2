@@ -445,3 +445,12 @@ export const getOrderStatusesPages = () => async (dispatch) => {
     payload: result.data.count,
   });
 };
+
+export const getCurrentOrder = (id) => async (dispatch) => {
+  const result = await API.get(`db/order/${id}`);
+
+  dispatch({
+    type: 'GET_CURRENTORDER',
+    payload: result.data,
+  });
+};
