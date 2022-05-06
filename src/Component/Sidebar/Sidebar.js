@@ -9,7 +9,7 @@ const Sidebar = ({ match, setCurrentLink, isOpened, setIsOpened }) => {
   const history = useHistory();
 
   const linkHandler = (link) => {
-    history.push(`${link.path}`);
+    history.push(`/main-page/${link.path}`);
     setCurrentLink(link.name);
   };
 

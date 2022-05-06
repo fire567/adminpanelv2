@@ -271,6 +271,15 @@ export const getCitiesPages = () => async (dispatch) => {
   });
 };
 
+export const getPointsList = () => async (dispatch) => {
+  const result = await API.get('db/point');
+
+  dispatch({
+    type: 'GET_POINTSLIST',
+    payload: result.data,
+  });
+};
+
 export const getPoints = (page) => async (dispatch) => {
   if (page === null) {
     dispatch({
@@ -454,3 +463,37 @@ export const getCurrentOrder = (id) => async (dispatch) => {
     payload: result.data,
   });
 };
+
+export const changeCurrentOrder =
+  (
+    id,
+    orderStatusId,
+    cityId,
+    pointId,
+    dateFrom,
+    dateTo,
+    rateId,
+    price,
+    isFullTank,
+    isNeedChildChair,
+    isRightWheel
+  ) =>
+  async (dispatch) => {
+    const result = await API.put(`db/order/${id}`, {
+      orderStatusId,
+      cityId,
+      pointId,
+      dateFrom,
+      dateTo,
+      rateId,
+      price,
+      isFullTank,
+      isNeedChildChair,
+      isRightWheel,
+    });
+
+    dispatch({
+      type: 'PUT_CURRENTORDER',
+      payload: result.data,
+    });
+  };

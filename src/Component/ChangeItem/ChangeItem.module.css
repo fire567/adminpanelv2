@@ -1,0 +1,7 @@
+.wrapper{
+    height: calc(386px - 59px - 59px);
+    display: grid;
+    align-content: space-around;
+    justify-content: space-around;
+    grid-template-columns: 210px 210px
+}

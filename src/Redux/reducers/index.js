@@ -20,6 +20,7 @@ import carCategoriesPages from './carCategoriesPages';
 import orderStatuses from './orderStatuses';
 import orderStatusesPages from './orderStatusesPages';
 import currentOrder from './currentOrder';
+import pointsList from './pointsList';
 
 export default combineReducers({
   auth,
@@ -43,4 +44,5 @@ export default combineReducers({
   orderStatuses,
   orderStatusesPages,
   currentOrder,
+  pointsList,
 });

@@ -25,8 +25,8 @@ export const links = [
 
 export const extra = [
   { id: 0, name: 'Полный бак' },
-  { id: 2, name: 'Детское кресло' },
-  { id: 3, name: 'Правый руль' },
+  { id: 1, name: 'Детское кресло' },
+  { id: 2, name: 'Правый руль' },
 ];
 
 export const carSections = [

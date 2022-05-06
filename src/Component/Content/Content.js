@@ -40,7 +40,7 @@ const Content = ({ currentLink }) => {
 
           <Route
             exact
-            path={'/main-page/:name/:change/:id'}
+            path={'/main-page/:name/change/:id'}
             component={ChangeOrder}
           />
         </Switch>
