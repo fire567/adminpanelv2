@@ -20,6 +20,12 @@ import carCategoriesPages from './carCategoriesPages';
 import orderStatuses from './orderStatuses';
 import orderStatusesPages from './orderStatusesPages';
 
+export const reduceOrders = (state) => state.orders;
+export const reduceOrdersPagesCount = (state) => state.ordersPagesCount;
+export const reduceCities = (state) => state.cities;
+export const reduceRateTypes = (state) => state.rateTypes;
+export const reduceRates = (state) => state.rates;
+
 export default combineReducers({
   auth,
   orders,

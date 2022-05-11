@@ -1,3 +1,4 @@
+
 .logo_form{
   display: flex;
   align-items: center;
@@ -16,7 +17,7 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 28px;
-  color: #3D5170;
+  color: var(--font-color);
 }
 
 .login_form{
@@ -37,7 +38,7 @@
   font-size: 17.5px;
   line-height: 20px;
   letter-spacing: -0.4375px;
-  color: #3D5170;
+  color: var(--font-color);
   height: 58px;
   display: flex;
   align-items: center;
@@ -67,7 +68,7 @@
   font-size: 10.5px;
   line-height: 12px;
   letter-spacing: -0.18421px;
-  color: #007BFF;
+  color: var(--blue-color);
   display: flex;
   align-items: center;
   height: 29px;
@@ -78,11 +79,16 @@
   width: 110px;
   height: 29px;
   outline: none;
-  background: #007BFF;
-  border: 0.5px solid #007BFF;
+  background: var(--blue-color);
+  border: 0.5px solid var(--blue-color);
   box-sizing: border-box;
   border-radius: 4px;
   color: white;
+  font-family: 'Helvetica';
+font-weight: 400;
+font-size: 11.5px;
+line-height: 13px;
+letter-spacing: -0.0821429px;
 }
 
 .login_btn:hover {
@@ -103,5 +109,5 @@
   font-size: 10px;
   line-height: 11px;
   letter-spacing: -0.175439px;
-  color: #C4183C;
+  color: var(--red-color);
 }

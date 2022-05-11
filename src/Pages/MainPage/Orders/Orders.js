@@ -13,15 +13,26 @@ import CurrentOrder from './CurrentOrder/CurrentOrder';
 import { useCookies } from 'react-cookie';
 import classes from './Orders.module.css';
 import Loading from '../../../Component/Loading/Loading';
+import {
+  reduceOrdersPagesCount,
+  reduceCities,
+  reduceRateTypes,
+  reduceRates,
+  reduceOrders,
+} from '../../../Redux/reducers';
 
 const Orders = () => {
   const [cookies] = useCookies(['access']);
   const dispatch = useDispatch();
-  const orders = useSelector((state) => state.orders);
-  const ordersPagesCount = useSelector((state) => state.ordersPagesCount);
-  const cities = useSelector((state) => state.cities);
-  const rateTypes = useSelector((state) => state.rateTypes);
-  const rates = useSelector((state) => state.rates);
+  const mapState = (state) => ({
+    orders: reduceOrders(state),
+    ordersPagesCount: reduceOrdersPagesCount(state),
+    cities: reduceCities(state),
+    rateTypes: reduceRateTypes(state),
+    rates: reduceRates(state),
+  });
+  const { orders, ordersPagesCount, cities, rateTypes, rates } =
+    useSelector(mapState);
   const [pageCount, setPageCount] = useState(0);
   const [odrersFilter, setOrdersFilter] = useState(null);
   const [citiesFilter, setCitiesFilter] = useState(null);

@@ -9,6 +9,7 @@ const LoginInput = ({
   error,
   hideError,
   setInvalid,
+  type,
 }) => {
   const changeTextHandler = (event) => {
     setText(event.target.value);
@@ -21,6 +22,7 @@ const LoginInput = ({
       <div className={classes.input_form}>
         <div className={classes.label}>{label}</div>
         <input
+          type={type}
           className={classes.input}
           placeholder={placeHolder}
           value={value}

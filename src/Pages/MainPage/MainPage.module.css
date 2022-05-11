@@ -62,7 +62,7 @@
 }
 
 .burger{
-  border: 2px solid #3D5170;
+  border: 2px solid var(--font-color);
   width: 25px;
   border-radius: 4px;
 }
