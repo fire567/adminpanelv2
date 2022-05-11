@@ -18,14 +18,25 @@ import DateInput from '../../../../Component/DateInput/DateInput';
 import ExtraOptions from '../../../../Component/ExtraOptions/ExtraOptions';
 import Price from '../../../../Component/Price/Price';
 import Loading from '../../../../Component/Loading/Loading';
+import {
+  reduceCities,
+  reduceRates,
+  reducePointsList,
+  reduceCurrentOrder,
+  reduceOrderStatuses,
+} from '../../../../Redux/reducers';
 
 const ChangeOrder = ({ match }) => {
   const dispatch = useDispatch();
-  const cities = useSelector((state) => state.cities);
-  const pointsList = useSelector((state) => state.pointsList);
-  const currentOrder = useSelector((state) => state.currentOrder);
-  const orderStatuses = useSelector((state) => state.orderStatuses);
-  const rates = useSelector((state) => state.rates);
+  const mapState = (state) => ({
+    pointsList: reducePointsList(state),
+    currentOrder: reduceCurrentOrder(state),
+    cities: reduceCities(state),
+    orderStatuses: reduceOrderStatuses(state),
+    rates: reduceRates(state),
+  });
+  const { pointsList, currentOrder, cities, orderStatuses, rates } =
+    useSelector(mapState);
   const [changeArr, setChangeArr] = useState(null);
   const [currentCitie, setCurrentCitie] = useState(null);
   const [currentPoint, setCurrentPoint] = useState(null);

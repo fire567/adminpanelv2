@@ -86,7 +86,7 @@ const LoginPage = () => {
           <button className={classes.login_btn} onClick={loginHandler}>
             Войти
           </button>
-          {invalid && (
+          {invalid && mail && password && (
             <div className={classes.invalid_data}>
               Неверная почта или пароль
             </div>

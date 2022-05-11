@@ -30,7 +30,7 @@
   font-size: 29px;
   line-height: 33px;
   letter-spacing: -0.725px;
-  color: #3D5170;
+  color: var(--font-color);
 }
 
 .main_content{

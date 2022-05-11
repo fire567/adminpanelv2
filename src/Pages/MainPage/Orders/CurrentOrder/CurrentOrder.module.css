@@ -36,6 +36,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 300px;
+}
+
+@media (max-width: 1250px) {
+  .description{
+    width: 250px;
+  }
 }
 
 .string{
@@ -163,11 +170,13 @@ b{
   line-height: 28px;
   letter-spacing: -0.754286px;
   color: #121212;
+  width: 100px;
 }
 
 @media (max-width: 750px) {
   .price{
     margin-top: 10px;
+    width: auto;
   }
 }
 
@@ -264,7 +273,7 @@ b{
   content: ' ';
   height: 8px;
   width: 1px;
-  background-color: #C4183C;
+  background-color: var(--red-color);
   }
   .decline_icon:before {
   transform: rotate(45deg);

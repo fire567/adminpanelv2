@@ -22,6 +22,15 @@ import orderStatusesPages from './orderStatusesPages';
 import currentOrder from './currentOrder';
 import pointsList from './pointsList';
 
+export const reduceOrders = (state) => state.orders;
+export const reduceOrdersPagesCount = (state) => state.ordersPagesCount;
+export const reduceCities = (state) => state.cities;
+export const reduceRateTypes = (state) => state.rateTypes;
+export const reduceRates = (state) => state.rates;
+export const reducePointsList = (state) => state.pointsList;
+export const reduceCurrentOrder = (state) => state.currentOrder;
+export const reduceOrderStatuses = (state) => state.orderStatuses;
+
 export default combineReducers({
   auth,
   orders,

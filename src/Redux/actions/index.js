@@ -29,7 +29,7 @@ export const postAuth = (mail, password) => async (dispatch) => {
       type: 'POST_AUTH',
       payload: response.data,
     });
-  } else {
+  }else {
     dispatch({
       type: 'POST_AUTH',
       payload: null,

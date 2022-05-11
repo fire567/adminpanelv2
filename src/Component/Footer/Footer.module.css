@@ -34,7 +34,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  color: #007BFF;
+  color: var(--blue-color);
 }
 
 .link:not(:first-child){

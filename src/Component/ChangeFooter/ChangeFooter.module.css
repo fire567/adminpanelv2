@@ -13,8 +13,8 @@
 }
 
 .apply{
-    background: #007BFF;
-    border: 0.5px solid #007BFF;
+    background: var(--blue-color);
+    border: 0.5px solid var(--blue-color);
     box-sizing: border-box;
     border-radius: 4px;
     outline: none;
@@ -34,8 +34,8 @@
   }
   
   .cancel{
-    background: #C4183C;
-    border: 0.5px solid #007BFF;
+    background: var(--red-color);
+    border: 0.5px solid var(--blue-color);
     box-sizing: border-box;
     border-radius: 4px;
     outline: none;
