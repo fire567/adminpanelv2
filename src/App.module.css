@@ -7,6 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  --blue-color: #007BFF;
+  --red-color: #C4183C;
+  --font-color: #3D5170;
 }
 
 body{
@@ -15,21 +18,21 @@ body{
 
 @font-face {
   font-family: "Helvetica";
-  src: url(./Fonts/helvetica_regular.otf);
+  src: url(./Fonts/HelveticaRegular.ttf);
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Helvetica";
-  src: url(./Fonts/helvetica_bold.otf);
+  src: url(./Fonts/HelveticaBold.ttf);
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Helvetica";
-  src: url(./Fonts/helvetica_light.otf);
+  src: url(./Fonts/HelveticaLight.ttf);
   font-weight: 300;
   font-style: normal;
 }
