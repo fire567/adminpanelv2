@@ -1,0 +1,130 @@
+.sidebar_form{
+  width: 285px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 75px rgba(90, 97, 105, 0.11), 0px 2px 4px rgba(90, 97, 105, 0.12), 0px 7.5px 11px rgba(90, 97, 105, 0.1), 0px 3.5px 17.5px rgba(165, 182, 201, 0.1);
+  height: 100vh;
+  z-index: 10;
+}
+
+@media (max-width: 1200px) {
+  .sidebar_form {
+    position: absolute;
+    transform: translateX(-285px);
+    box-shadow: none;
+    transition: transform 0.3s;
+  }
+}
+
+.sidebar_form_active{
+  width: 285px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 75px rgba(90, 97, 105, 0.11), 0px 2px 4px rgba(90, 97, 105, 0.12), 0px 7.5px 11px rgba(90, 97, 105, 0.1), 0px 3.5px 17.5px rgba(165, 182, 201, 0.1);
+  height: 100vh;
+  z-index: 10;
+  position: absolute;
+  transition: transform 0.3s;
+}
+
+.header{
+  height: 67px;
+  display: flex;
+  margin-left: 49px;
+  align-items: center;
+}
+
+.logo{
+  background-image: url('../../assets/logo-icon.svg');
+  width: 23px;
+  height: 23px;
+}
+
+.product_name{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #3D5170;
+  font-family: Helvetica;
+  margin-left: 7px;
+}
+
+.item{
+  cursor: pointer;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  color: #3D5170;
+  transition: all 0.3s;
+}
+
+.item:first-child{
+  box-shadow: inset 0px 1px 0px #E1E5EB, inset 0px -1px 0px #E1E5EB;
+}
+
+.item:not(:first-child){
+  box-shadow: inset 0px -1px 0px #E1E5EB;
+}
+
+.item_active{
+  color: #007BFF;
+  border-left: 4px solid #007BFF;
+  background: #FBFBFB;
+}
+
+.item:hover{
+  color: #007BFF;
+}
+
+.icon{
+  left: 29px;
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background-position: center;
+}
+
+.icon svg{
+  height: 11px;
+}
+
+.icon div{
+  display: flex;
+}
+
+.icon_active svg path{
+  fill: #007BFF;
+}
+
+.item_name{
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: -0.234375px;
+  left: 49px;
+  font-family: Helvetica;
+  position: absolute;
+}
+
+@media (max-width: 1200px) {
+  .close {
+    position: absolute;
+    height: 32px;
+    cursor: pointer;
+    right: 30px;
+    bottom: 20px;
+    }
+    .close:before, .close:after {
+    position: absolute;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color:#3D5170;;
+    }
+    .close:before {
+    transform: rotate(45deg);
+    }
+    .close:after {
+    transform: rotate(-45deg);
+    } 
+}
