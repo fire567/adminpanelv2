@@ -47,16 +47,21 @@
 
 .options{
     position: absolute;
+    height: 200px;
     z-index: 50;
+    top: 29px;
     width: 200px;
     border: 1px solid #BECAD6;
+    overflow-y: scroll;
     background-color: white;
 }
 
 .option{
     height: 25px;
     cursor: pointer;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .option:hover{

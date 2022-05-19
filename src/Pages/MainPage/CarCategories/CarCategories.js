@@ -10,7 +10,7 @@ import {
 } from '../../../Redux/actions';
 import { CarCategorySections } from '../../../consts';
 
-const CarCategories = () => {
+const CarCategories = ({ linkName }) => {
   const dispatch = useDispatch();
   const carCategories = useSelector((state) => state.carCategories);
   const carCategoriesPages = useSelector((state) => state.carCategoriesPages);
@@ -29,7 +29,7 @@ const CarCategories = () => {
     if (carCategories) {
       let ArrObj = [];
       carCategories.data.forEach((item) => {
-        ArrObj = [...ArrObj, [item.name, item.description]];
+        ArrObj = [...ArrObj, [item.name, item.description, item.id]];
       });
       setTableItems(ArrObj);
     }
@@ -37,11 +37,13 @@ const CarCategories = () => {
 
   return (
     <>
-      <AddItemsHeader />
+      <AddItemsHeader linkName={linkName} />
       {carCategories && tableItems ? (
         <CurrentItemsList
           sections={CarCategorySections}
           tableItems={tableItems}
+          linkName={linkName}
+          pageCount={pageCount}
         />
       ) : (
         <Loading />

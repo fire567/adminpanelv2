@@ -7,7 +7,7 @@ import Pagination from '../../../Component/Pgination/Pagination';
 import { getRatesTypeList, getRatesTypePages } from '../../../Redux/actions';
 import { tariffsTypeSections } from '../../../consts';
 
-const TariffTypes = () => {
+const TariffTypes = ({ linkName }) => {
   const dispatch = useDispatch();
   const rateTypesList = useSelector((state) => state.rateTypesList);
   const ratesTypePages = useSelector((state) => state.ratesTypePages);
@@ -26,7 +26,7 @@ const TariffTypes = () => {
     if (rateTypesList) {
       let ArrObj = [];
       rateTypesList.data.forEach((item) => {
-        ArrObj = [...ArrObj, [item.name, item.unit]];
+        ArrObj = [...ArrObj, [item.name, item.unit, item.id]];
       });
       setTableItems(ArrObj);
     }
@@ -34,11 +34,13 @@ const TariffTypes = () => {
 
   return (
     <>
-      <AddItemsHeader />
+      <AddItemsHeader linkName={linkName} />
       {rateTypesList && tableItems ? (
         <CurrentItemsList
           sections={tariffsTypeSections}
           tableItems={tableItems}
+          linkName={linkName}
+          pageCount={pageCount}
         />
       ) : (
         <Loading />

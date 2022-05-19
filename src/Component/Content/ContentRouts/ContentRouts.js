@@ -9,33 +9,116 @@ import TariffTypes from '../../../Pages/MainPage/TariffTypes/TariffTypes';
 import CarCategories from '../../../Pages/MainPage/CarCategories/CarCategories';
 import OrderStatuses from '../../../Pages/MainPage/OrderStatuses/OrderStatuses';
 import ChangeOrder from '../../../Pages/MainPage/Orders/ChangeOrder/ChangeOrder';
+import ChangeCitie from '../../../Pages/MainPage/CitiesList/ChangeCitie/ChangeCitie';
+import ChangePoints from '../../../Pages/MainPage/PointsList/ChangePoints/ChangePoints';
+import ChangeTariff from '../../../Pages/MainPage/Tariff/ChangeTariff/ChangeTariff';
+import ChangeTariffType from '../../../Pages/MainPage/TariffTypes/ChangeTariffType/ChangeTariffType';
+import ChangeCarCategory from '../../../Pages/MainPage/CarCategories/ChangeCarCategory/ChangeCarCategory';
+import ChangeOrderStatuses from '../../../Pages/MainPage/OrderStatuses/ChangeOrderStatuses/ChangeOrderStatuses';
+import AddCitie from '../../../Pages/MainPage/CitiesList/AddCitie/AddCitie';
+import AddPoint from '../../../Pages/MainPage/PointsList/AddPoint/AddPoint';
+import AddTariff from '../../../Pages/MainPage/Tariff/AddTariff/AddTariff';
+import AddTariffType from '../../../Pages/MainPage/TariffTypes/AddTariffType/AddTariffType';
+import AddCarCategory from '../../../Pages/MainPage/CarCategories/AddCarCategory/AddCarCategory';
+import AddOrderStatus from '../../../Pages/MainPage/OrderStatuses/AddOrderStatus/AddOrderStatus';
+import ErrorPage from '../../../Pages/ErrorPage/ErrorPage';
 
-const ContentRouts = () => {
+const ContentRouts = ({ match }) => {
   return (
     <>
       <Switch>
         <Route exact path={'/main-page/orders'} component={Orders} />
-        <Route exact path={'/main-page/cars-list'} component={CarsList} />
-        <Route exact path={'/main-page/cities'} component={CitiesList} />
-        <Route exact path={'/main-page/places'} component={PointsList} />
-        <Route exact path={'/main-page/rates'} component={Tariff} />
-        <Route exact path={'/main-page/rates-types'} component={TariffTypes} />
+        <Route
+          exact
+          path={'/main-page/cars-list'}
+          render={() => <CarsList linkName={match.params.name} />}
+        />
+        <Route
+          exact
+          path={'/main-page/cities'}
+          render={() => <CitiesList linkName={match.params.name} />}
+        />
+        <Route
+          exact
+          path={'/main-page/places'}
+          render={() => <PointsList linkName={match.params.name} />}
+        />
+        <Route
+          exact
+          path={'/main-page/rates'}
+          render={() => <Tariff linkName={match.params.name} />}
+        />
+        <Route
+          exact
+          path={'/main-page/rates-types'}
+          render={() => <TariffTypes linkName={match.params.name} />}
+        />
         <Route
           exact
           path={'/main-page/cars-categories'}
-          component={CarCategories}
+          render={() => <CarCategories linkName={match.params.name} />}
         />
         <Route
           exact
           path={'/main-page/orders-status'}
-          component={OrderStatuses}
+          render={() => <OrderStatuses linkName={match.params.name} />}
         />
 
         <Route
           exact
-          path={'/main-page/:name/change/:id'}
+          path={'/main-page/orders/change/:id'}
           component={ChangeOrder}
         />
+        <Route
+          exact
+          path={'/main-page/cities/change/:id'}
+          component={ChangeCitie}
+        />
+        <Route
+          exact
+          path={'/main-page/places/change/:id'}
+          component={ChangePoints}
+        />
+        <Route
+          exact
+          path={'/main-page/rates/change/:id'}
+          component={ChangeTariff}
+        />
+        <Route
+          exact
+          path={'/main-page/rates-types/change/:id'}
+          component={ChangeTariffType}
+        />
+        <Route
+          exact
+          path={'/main-page/cars-categories/change/:id'}
+          component={ChangeCarCategory}
+        />
+        <Route
+          exact
+          path={'/main-page/orders-status/change/:id'}
+          component={ChangeOrderStatuses}
+        />
+
+        <Route exact path={'/main-page/cities/add/'} component={AddCitie} />
+        <Route exact path={'/main-page/places/add/'} component={AddPoint} />
+        <Route exact path={'/main-page/rates/add/'} component={AddTariff} />
+        <Route
+          exact
+          path={'/main-page/rates-types/add/'}
+          component={AddTariffType}
+        />
+        <Route
+          exact
+          path={'/main-page/cars-categories/add/'}
+          component={AddCarCategory}
+        />
+        <Route
+          exact
+          path={'/main-page/orders-status/add/'}
+          component={AddOrderStatus}
+        />
+        <Route component={ErrorPage} />
       </Switch>
     </>
   );

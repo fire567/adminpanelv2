@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import setHours from 'date-fns/setHours';
-import setMinutes from 'date-fns/setMinutes';
 import {
   getCities,
   getCurrentOrder,
@@ -13,10 +11,7 @@ import {
 import IdHeader from '../../../../Component/IdHeader/IdHeader';
 import ChangeItem from '../../../../Component/ChangeItem/ChangeItem';
 import ChangeFooter from '../../../../Component/ChangeFooter/ChangeFooter';
-import PopUpOptions from '../../../../Component/PopUpOption/PopUpOptions';
-import DateInput from '../../../../Component/DateInput/DateInput';
-import ExtraOptions from '../../../../Component/ExtraOptions/ExtraOptions';
-import Price from '../../../../Component/Price/Price';
+import { setOrderChangeArr, setPrice } from '../../../../consts';
 import Loading from '../../../../Component/Loading/Loading';
 import {
   reduceCities,
@@ -112,111 +107,36 @@ const ChangeOrder = ({ match }) => {
       orderStatuses &&
       extraObj
     ) {
-      setChangeArr([
-        {
-          id: 0,
-          component: (
-            <PopUpOptions
-              items={cities.data}
-              setItem={setCurrentCitie}
-              currentItem={currentCitie}
-              defaultItem={currentOrder.data.cityId}
-              label={'Город'}
-              isNeedCheck={isNeedCheck}
-            />
-          ),
-        },
-        {
-          id: 1,
-          component: (
-            <PopUpOptions
-              items={validPoints ? validPoints : pointsList.data}
-              setItem={setCurrentPoint}
-              currentItem={currentPoint}
-              defaultItem={currentCitie ? null : currentOrder.data.pointId}
-              label={'Адрес'}
-              isNeedCheck={isNeedCheck}
-            />
-          ),
-        },
-        {
-          id: 2,
-          component: (
-            <PopUpOptions
-              items={orderStatuses.data}
-              setItem={setCurrentStatus}
-              currentItem={currentStatus}
-              defaultItem={currentOrder.data.orderStatusId}
-              label={'Статус'}
-              isNeedCheck={isNeedCheck}
-            />
-          ),
-        },
-        {
-          id: 3,
-          component: (
-            <DateInput
-              label={'С:'}
-              setItem={setCurrentSinceDate}
-              currentItem={currentSinceDate}
-              defaultItem={currentOrder.data.dateFrom}
-            />
-          ),
-        },
-        {
-          id: 4,
-          component: (
-            <DateInput
-              label={'По:'}
-              setItem={setCurrentEndDate}
-              currentItem={currentEndDate}
-              defaultItem={currentOrder.data.dateTo}
-              minTime={currentSinceDate && currentSinceDate.getTime()}
-              maxTime={setHours(setMinutes(new Date(), 59), 23)}
-              minDate={
-                currentSinceDate ? currentSinceDate : currentOrder.data.dateFrom
-              }
-            />
-          ),
-        },
-        {
-          id: 5,
-          component: (
-            <PopUpOptions
-              items={rates.data}
-              label={'Тариф'}
-              setItem={setCurrentRate}
-              currentItem={currentRate}
-              defaultItem={currentOrder.data.rateId}
-              isNeedCheck={isNeedCheck}
-            />
-          ),
-        },
-        {
-          id: 6,
-          component: (
-            <ExtraOptions
-              defaultItem={extraObj}
-              setIsFullTank={setIsFullTank}
-              isFullTank={isFullTank}
-              setIsChair={setIsChair}
-              isChair={isChair}
-              setIsRightWheel={setIsRightWheel}
-              isRightWheel={isRightWheel}
-            />
-          ),
-        },
-        {
-          id: 7,
-          component: (
-            <Price
-              defaultItem={
-                currentPrice ? currentPrice : currentOrder.data.price
-              }
-            />
-          ),
-        },
-      ]);
+      setOrderChangeArr(
+        setChangeArr,
+        setCurrentCitie,
+        currentCitie,
+        currentOrder,
+        isNeedCheck,
+        validPoints,
+        pointsList,
+        setCurrentPoint,
+        currentPoint,
+        orderStatuses,
+        setCurrentStatus,
+        currentStatus,
+        setCurrentSinceDate,
+        currentSinceDate,
+        setCurrentEndDate,
+        currentEndDate,
+        setCurrentRate,
+        currentRate,
+        extraObj,
+        setIsFullTank,
+        isFullTank,
+        setIsChair,
+        isChair,
+        setIsRightWheel,
+        isRightWheel,
+        currentPrice,
+        cities,
+        rates
+      );
     }
   }, [
     cities,
@@ -271,59 +191,15 @@ const ChangeOrder = ({ match }) => {
     currentPrice,
   ]);
 
-  const calculatePrice = () => {
-    const miliseconds =
-      Date.parse(currentEndDate ? currentEndDate : currentOrder.data.dateTo) -
-      Date.parse(
-        currentSinceDate ? currentSinceDate : currentOrder.data.dateFrom
-      );
-    if (
-      currentRate
-        ? currentRate.price
-        : currentOrder.data.rateId
-        ? currentOrder.data.rateId.price === 7
-        : false
-    ) {
-      return Math.floor(
-        (miliseconds / (1000 * 60)) * currentRate
-          ? currentRate.price
-          : currentOrder.data.rateId
-          ? currentOrder.data.rateId.price
-          : 0 + currentOrder.data.carId
-          ? currentOrder.data.carId.priceMin
-          : 0
-      );
-    }
-    return Math.floor(
-      (miliseconds / (1000 * 60 * 60 * 24 * 31)) * currentRate
-        ? currentRate.price
-        : currentOrder.data.rateId.price + currentOrder.data.carId
-        ? currentOrder.data.carId.priceMin
-        : 0
-    );
-  };
-
   useEffect(() => {
-    if (currentOrder) {
-      if (currentRate || currentOrder.data.rateId) {
-        setCurrentPrice(calculatePrice);
-      }
-      if (extraObj && extraObj.isFullTank === true) {
-        setCurrentPrice((prev) => Math.floor(prev + 500));
-      } else {
-        setCurrentPrice((prev) => Math.floor(prev + 0));
-      }
-      if (extraObj && extraObj.isChair === true) {
-        setCurrentPrice((prev) => Math.floor(prev + 200));
-      } else {
-        setCurrentPrice((prev) => Math.floor(prev + 0));
-      }
-      if (extraObj && extraObj.isRightWheel === true) {
-        setCurrentPrice((prev) => Math.floor(prev + 1500));
-      } else {
-        setCurrentPrice((prev) => Math.floor(prev + 0));
-      }
-    }
+    setPrice(
+      currentOrder,
+      setCurrentPrice,
+      currentRate,
+      extraObj,
+      currentEndDate,
+      currentSinceDate
+    );
   }, [currentOrder, currentRate, extraObj, currentSinceDate, currentEndDate]);
 
   useEffect(() => {
@@ -352,7 +228,7 @@ const ChangeOrder = ({ match }) => {
           changeObj.isRightWheel
         )
       );
-    } else console.log(changeObj);
+    } else;
   }, [isAcceptBtnTriggered]);
 
   return (

@@ -1,4 +1,5 @@
 import API from '../../apis/API';
+import history from '../../history';
 import { Buffer } from 'buffer';
 
 export const postAuth = (mail, password) => async (dispatch) => {
@@ -29,7 +30,7 @@ export const postAuth = (mail, password) => async (dispatch) => {
       type: 'POST_AUTH',
       payload: response.data,
     });
-  }else {
+  } else {
     dispatch({
       type: 'POST_AUTH',
       payload: null,
@@ -406,6 +407,15 @@ export const getCarCategories = (page) => async (dispatch) => {
   }
 };
 
+export const getCategoriesList = () => async (dispatch) => {
+  const result = await API.get('db/category');
+
+  dispatch({
+    type: 'GET_CATEGORIESLIST',
+    payload: result.data,
+  });
+};
+
 export const getCarCategoriesPages = () => async (dispatch) => {
   const result = await API.get('db/category', {
     params: {
@@ -456,7 +466,12 @@ export const getOrderStatusesPages = () => async (dispatch) => {
 };
 
 export const getCurrentOrder = (id) => async (dispatch) => {
-  const result = await API.get(`db/order/${id}`);
+  let result = {};
+  if (id) {
+    result = await API.get(`db/order/${id}`);
+  } else {
+    result = { data: null };
+  }
 
   dispatch({
     type: 'GET_CURRENTORDER',
@@ -496,4 +511,561 @@ export const changeCurrentOrder =
       type: 'PUT_CURRENTORDER',
       payload: result.data,
     });
+
+    history.goBack();
+  };
+
+export const changeCurrentOrderStatus =
+  (id, orderStatusId) => async (dispatch) => {
+    const result = await API.put(`db/order/${id}`, {
+      orderStatusId,
+    });
+
+    dispatch({
+      type: 'PUT_CURRENTORDERSTATUS',
+      payload: result.data,
+    });
+  };
+
+export const getCurrentCity = (id) => async (dispatch) => {
+  let result = {};
+  if (id) {
+    result = await API.get(`db/city/${id}`);
+  } else {
+    result = { data: null };
+  }
+
+  dispatch({
+    type: 'GET_CURRENTCITY',
+    payload: result.data,
+  });
+};
+
+export const changeCity = (id, name, token) => async (dispatch) => {
+  const result = await API.put(
+    `db/city/${id}`,
+    {
+      name,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'PUT_CITY',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const addCity = (name, token) => async (dispatch) => {
+  const result = await API.post(
+    `db/city`,
+    {
+      name,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'POST_CITY',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const deleteCity =
+  (id, token, setIsPopUpOpened, pageCount) => async (dispatch) => {
+    const result = await API.delete(`db/city/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: 'DELETE_CITY',
+    });
+
+    setIsPopUpOpened(false);
+    dispatch(getCitiesList(pageCount));
+  };
+
+export const getCurrentPoint = (id) => async (dispatch) => {
+  let result = {};
+  if (id) {
+    result = await API.get(`db/point/${id}`);
+  } else {
+    result = { data: null };
+  }
+
+  dispatch({
+    type: 'GET_CURRENTPOINT',
+    payload: result.data,
+  });
+};
+
+export const changePoint =
+  (id, cityId, address, name, token) => async (dispatch) => {
+    const result = await API.put(
+      `db/point/${id}`,
+      {
+        address,
+        name,
+        cityId,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: 'PUT_CURRENTCITY',
+      payload: result.data,
+    });
+    history.goBack();
+  };
+
+export const addPoint = (cityId, address, name, token) => async (dispatch) => {
+  const result = await API.post(
+    `db/point/`,
+    {
+      address,
+      name,
+      cityId,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'POST_CURRENTCITY',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const deletePoint =
+  (id, token, setIsPopUpOpened, pageCount) => async (dispatch) => {
+    const result = await API.delete(`db/point/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: 'DELETE_POINT',
+    });
+
+    setIsPopUpOpened(false);
+    dispatch(getPoints(pageCount));
+  };
+
+export const getCurrentRate = (id) => async (dispatch) => {
+  let result = {};
+  if (id) {
+    result = await API.get(`db/rate/${id}`);
+  } else {
+    result = { data: null };
+  }
+
+  dispatch({
+    type: 'GET_CURRENTRATE',
+    payload: result.data,
+  });
+};
+
+export const changeRate =
+  (id, rateTypeId, price, token) => async (dispatch) => {
+    const result = await API.put(
+      `db/rate/${id}`,
+      {
+        rateTypeId,
+        price,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: 'PUT_CURRENTRATE',
+      payload: result.data,
+    });
+    history.goBack();
+  };
+
+export const addRate = (rateTypeId, price, token) => async (dispatch) => {
+  const result = await API.post(
+    `db/rate`,
+    {
+      rateTypeId,
+      price,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'POST_CURRENTRATE',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const deleteRate =
+  (id, token, setIsPopUpOpened, pageCount) => async (dispatch) => {
+    const result = await API.delete(`db/rate/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: 'DELETE_RATE',
+    });
+
+    setIsPopUpOpened(false);
+    dispatch(getRatesList(pageCount));
+  };
+
+export const getCurrentRateType = (id) => async (dispatch) => {
+  let result = {};
+  if (id) {
+    result = await API.get(`db/rateType/${id}`);
+  } else {
+    result = { data: null };
+  }
+
+  dispatch({
+    type: 'GET_CURRENTRATETYPE',
+    payload: result.data,
+  });
+};
+
+export const changeRateType = (id, unit, name, token) => async (dispatch) => {
+  const result = await API.put(
+    `db/rateType/${id}`,
+    {
+      unit,
+      name,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'PUT_CURRENTRATETYPE',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const addRateType = (unit, name, token) => async (dispatch) => {
+  const result = await API.post(
+    `db/rateType`,
+    {
+      unit,
+      name,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'POST_CURRENTRATETYPE',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const deleteRateType =
+  (id, token, setIsPopUpOpened, pageCount) => async (dispatch) => {
+    const result = await API.delete(`db/rateType/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: 'DELETE_RATETYPE',
+    });
+
+    setIsPopUpOpened(false);
+    dispatch(getRatesTypeList(pageCount));
+  };
+
+export const getCurrentCarCategory = (id) => async (dispatch) => {
+  let result = {};
+  if (id) {
+    result = await API.get(`db/category/${id}`);
+  } else {
+    result = { data: null };
+  }
+
+  dispatch({
+    type: 'GET_CURRENTCARCATEGORY',
+    payload: result.data,
+  });
+};
+
+export const changeCarCategory =
+  (id, description, name, token) => async (dispatch) => {
+    const result = await API.put(
+      `db/category/${id}`,
+      {
+        description,
+        name,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: 'PUT_CURRENTCARCATEGORY',
+      payload: result.data,
+    });
+    history.goBack();
+  };
+
+export const addCarCategory =
+  (description, name, token) => async (dispatch) => {
+    const result = await API.post(
+      `db/category`,
+      {
+        description,
+        name,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: 'POST_CURRENTCARCATEGORY',
+      payload: result.data,
+    });
+    history.goBack();
+  };
+
+export const deleteCategory =
+  (id, token, setIsPopUpOpened, pageCount) => async (dispatch) => {
+    const result = await API.delete(`db/category/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: 'DELETE_CATEGORY',
+    });
+
+    setIsPopUpOpened(false);
+    dispatch(getCarCategories(pageCount));
+  };
+
+export const getCurrentOrderStatus = (id) => async (dispatch) => {
+  let result = {};
+  if (id) {
+    result = await API.get(`db/orderStatus/${id}`);
+  } else {
+    result = { data: null };
+  }
+
+  dispatch({
+    type: 'GET_CURRENTORDERSTATUS',
+    payload: result.data,
+  });
+};
+
+export const changeOrderStatus = (id, name, token) => async (dispatch) => {
+  const result = await API.put(
+    `db/orderStatus/${id}`,
+    {
+      name,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'PUT_CURRENTORDERSTATUS',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const addOrderStatus = (name, token) => async (dispatch) => {
+  const result = await API.post(
+    `db/orderStatus`,
+    {
+      name,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  dispatch({
+    type: 'POST_CURRENTORDERSTATUS',
+    payload: result.data,
+  });
+  history.goBack();
+};
+
+export const deleteOrderStatus =
+  (id, token, setIsPopUpOpened, pageCount) => async (dispatch) => {
+    const result = await API.delete(`db/orderStatus/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: 'DELETE_ORDERSTATUSES',
+    });
+
+    setIsPopUpOpened(false);
+    dispatch(getOrderStatuses(pageCount));
+  };
+
+export const getCurrentCar = (id) => async (dispatch) => {
+  let result = {};
+  if (id) {
+    result = await API.get(`db/car/${id}`);
+  } else {
+    result = { data: null };
+  }
+
+  dispatch({
+    type: 'GET_CURRENTCAR',
+    payload: result.data,
+  });
+};
+
+export const changeCar =
+  (
+    id,
+    priceMin,
+    priceMax,
+    name,
+    description,
+    categoryId,
+    colors,
+    thumbnail,
+    token
+  ) =>
+  async (dispatch) => {
+    const result = await API.put(
+      `db/car/${id}`,
+      {
+        priceMin,
+        priceMax,
+        name,
+        description,
+        categoryId,
+        colors,
+        thumbnail,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: 'PUT_CURRENTCARCHANGE',
+      payload: result.data,
+    });
+    history.goBack();
+  };
+
+export const addCar =
+  (
+    priceMin,
+    priceMax,
+    name,
+    description,
+    categoryId,
+    colors,
+    thumbnail,
+    token
+  ) =>
+  async (dispatch) => {
+    const result = await API.post(
+      `db/car`,
+      {
+        priceMin,
+        priceMax,
+        name,
+        description,
+        categoryId,
+        colors,
+        thumbnail,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    dispatch({
+      type: 'POST_CURRENTCARCHANGE',
+      payload: result.data,
+    });
+    history.goBack();
+  };
+
+export const deleteCar =
+  (id, token, setIsPopUpOpened, pageCount) => async (dispatch) => {
+    const result = await API.delete(`db/car/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: 'DELETE_CURRENTCAR',
+    });
+    if (pageCount) {
+      setIsPopUpOpened(false);
+      dispatch(getCars(pageCount));
+    }
+    if (pageCount === undefined || pageCount === null) {
+      history.goBack();
+    }
   };

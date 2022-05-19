@@ -6,13 +6,14 @@ import reducers from './Redux/reducers';
 import { createStore, applyMiddleware } from 'redux';
 import MainRouts from './Component/MainRouts/MainRouts';
 import { CookiesProvider } from 'react-cookie';
+import history from './history';
 import classes from './App.module.css';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
 const App = () => {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL} history={history}>
       <Provider store={store}>
         <CookiesProvider>
           <div className={classes.app}>

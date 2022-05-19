@@ -5,12 +5,18 @@ import { ReactSVG } from 'react-svg';
 import { useHistory } from 'react-router-dom';
 import classes from './Sidebar.module.css';
 
-const Sidebar = ({ match, setCurrentLink, isOpened, setIsOpened }) => {
+const Sidebar = ({
+  match,
+  setCurrentLink,
+  isOpened,
+  setIsOpened,
+  currentLink,
+}) => {
   const history = useHistory();
 
   const linkHandler = (link) => {
-    history.push(`/main-page/${link.path}`);
     setCurrentLink(link.name);
+    history.push(`/main-page/${link.path}`);
   };
 
   const closeMunuHandler = () => {

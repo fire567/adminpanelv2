@@ -7,7 +7,7 @@ import { getCitiesList, getCitiesPages } from '../../../Redux/actions';
 import Pagination from '../../../Component/Pgination/Pagination';
 import { citySections } from '../../../consts';
 
-const CitiesList = () => {
+const CitiesList = ({ linkName }) => {
   const dispatch = useDispatch();
   const citiesList = useSelector((state) => state.citiesList);
   const citiesPages = useSelector((state) => state.citiesPages);
@@ -26,7 +26,7 @@ const CitiesList = () => {
     if (citiesList) {
       let ArrObj = [];
       citiesList.data.forEach((item) => {
-        ArrObj = [...ArrObj, [item.name]];
+        ArrObj = [...ArrObj, [item.name, item.id]];
       });
       setTableItems(ArrObj);
     }
@@ -34,9 +34,14 @@ const CitiesList = () => {
 
   return (
     <>
-      <AddItemsHeader />
+      <AddItemsHeader linkName={linkName} />
       {citiesList && tableItems ? (
-        <CurrentItemsList sections={citySections} tableItems={tableItems} />
+        <CurrentItemsList
+          sections={citySections}
+          tableItems={tableItems}
+          linkName={linkName}
+          pageCount={pageCount}
+        />
       ) : (
         <Loading />
       )}

@@ -4,8 +4,11 @@ import Moment from 'react-moment';
 import { extra } from '../../../../consts';
 import { useHistory } from 'react-router-dom';
 import classes from './CurrentOrder.module.css';
+import { changeCurrentOrderStatus } from '../../../../Redux/actions';
+import { useDispatch } from 'react-redux';
 
 const CurrentOrder = ({ item }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const checkboxStyle = (extra) => {
@@ -22,6 +25,24 @@ const CurrentOrder = ({ item }) => {
 
   const onChangeLink = () => {
     history.push(`orders/change/${item.id}`);
+  };
+
+  const changeStatusToCancel = () => {
+    dispatch(
+      changeCurrentOrderStatus(item.id, {
+        name: 'Отмененные',
+        id: '5e26a1f5099b810b946c5d8c',
+      })
+    );
+  };
+
+  const changeStatusToDone = () => {
+    dispatch(
+      changeCurrentOrderStatus(item.id, {
+        name: 'Завершенные',
+        id: '6278c4ba9535e90010bfaf36',
+      })
+    );
   };
 
   return (
@@ -61,11 +82,17 @@ const CurrentOrder = ({ item }) => {
       </div>
       <div className={classes.price}>{item.price} ₽</div>
       <div className={classes.buttons}>
-        <button className={classNames(classes.button, classes.accept)}>
+        <button
+          className={classNames(classes.button, classes.accept)}
+          onClick={changeStatusToDone}
+        >
           <div className={classes.accept_icon} />
           Готово
         </button>
-        <button className={classNames(classes.button, classes.decline)}>
+        <button
+          className={classNames(classes.button, classes.decline)}
+          onClick={changeStatusToCancel}
+        >
           <div className={classes.decline_icon} />
           Отмена
         </button>

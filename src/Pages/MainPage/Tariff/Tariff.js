@@ -7,7 +7,7 @@ import CurrentItemsList from '../../../Component/CurrentItemsList/CurrentItemsLi
 import Pagination from '../../../Component/Pgination/Pagination';
 import { tariffSections } from '../../../consts';
 
-const Tariff = () => {
+const Tariff = ({ linkName }) => {
   const dispatch = useDispatch();
   const ratesList = useSelector((state) => state.ratesList);
   const ratesPages = useSelector((state) => state.ratesPages);
@@ -28,7 +28,7 @@ const Tariff = () => {
       ratesList.data.forEach((item) => {
         ArrObj = [
           ...ArrObj,
-          [item.rateTypeId && item.rateTypeId.name, item.price],
+          [item.rateTypeId && item.rateTypeId.name, item.price, item.id],
         ];
       });
       setTableItems(ArrObj);
@@ -37,9 +37,14 @@ const Tariff = () => {
 
   return (
     <>
-      <AddItemsHeader />
+      <AddItemsHeader linkName={linkName} />
       {ratesList && tableItems ? (
-        <CurrentItemsList sections={tariffSections} tableItems={tableItems} />
+        <CurrentItemsList
+          sections={tariffSections}
+          tableItems={tableItems}
+          linkName={linkName}
+          pageCount={pageCount}
+        />
       ) : (
         <Loading />
       )}

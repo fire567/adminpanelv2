@@ -10,7 +10,7 @@ import {
 } from '../../../Redux/actions';
 import { orderStatusessections } from '../../../consts';
 
-const OrderStatuses = () => {
+const OrderStatuses = ({ linkName }) => {
   const dispatch = useDispatch();
   const orderStatuses = useSelector((state) => state.orderStatuses);
   const orderStatusesPages = useSelector((state) => state.orderStatusesPages);
@@ -29,18 +29,20 @@ const OrderStatuses = () => {
     if (orderStatuses) {
       let ArrObj = [];
       orderStatuses.data.forEach((item) => {
-        ArrObj = [...ArrObj, [item.name]];
+        ArrObj = [...ArrObj, [item.name, item.id]];
       });
       setTableItems(ArrObj);
     }
   }, [orderStatuses]);
   return (
     <>
-      <AddItemsHeader />
+      <AddItemsHeader linkName={linkName} />
       {orderStatuses && tableItems ? (
         <CurrentItemsList
           sections={orderStatusessections}
           tableItems={tableItems}
+          linkName={linkName}
+          pageCount={pageCount}
         />
       ) : (
         <Loading />

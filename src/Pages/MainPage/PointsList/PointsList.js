@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPoints, getPointsPages } from '../../../Redux/actions';
 import { pointSections } from '../../../consts';
 
-const PointsList = () => {
+const PointsList = ({ linkName }) => {
   const dispatch = useDispatch();
   const points = useSelector((state) => state.points);
   const pointsPagesCount = useSelector((state) => state.pointsPagesCount);
@@ -26,7 +26,10 @@ const PointsList = () => {
     if (points) {
       let ArrObj = [];
       points.data.forEach((item) => {
-        ArrObj = [...ArrObj, [item.cityId && item.cityId.name, item.address]];
+        ArrObj = [
+          ...ArrObj,
+          [item.cityId && item.cityId.name, item.address, item.id],
+        ];
       });
       setTableItems(ArrObj);
     }
@@ -34,9 +37,14 @@ const PointsList = () => {
 
   return (
     <>
-      <AddItemsHeader />
+      <AddItemsHeader linkName={linkName} />
       {points && tableItems ? (
-        <CurrentItemsList sections={pointSections} tableItems={tableItems} />
+        <CurrentItemsList
+          sections={pointSections}
+          tableItems={tableItems}
+          linkName={linkName}
+          pageCount={pageCount}
+        />
       ) : (
         <Loading />
       )}

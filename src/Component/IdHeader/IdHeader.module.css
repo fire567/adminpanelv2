@@ -11,3 +11,9 @@
     color: #3D5170;
     text-indent: 20px;
 }
+
+@media (max-width: 390px) {
+    .id_field{
+        font-size: 15px;
+    }
+  }

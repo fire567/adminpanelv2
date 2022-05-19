@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { isValid } from 'date-fns';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './PopUpOption.module.css';
 
 const PopUpOptions = ({
@@ -28,7 +27,7 @@ const PopUpOptions = ({
     if (label === 'Адрес') {
       return item.address;
     } else if (label === 'Тариф') {
-      return item.rateTypeId.name;
+      return item.rateTypeId && item.rateTypeId.name;
     } else return item.name;
   };
 
@@ -55,23 +54,23 @@ const PopUpOptions = ({
         {!isValid && (
           <div className={classes.error_message}>Введите данные</div>
         )}
+        {isOpened &&
+          (items.length > 0 ? (
+            <div className={classes.options}>
+              {items.map((item) => (
+                <div
+                  key={item.id}
+                  className={classes.option}
+                  onClick={() => optionHandler(item)}
+                >
+                  {showItem(item)}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={classes.empty}>Нет данных</div>
+          ))}
       </div>
-      {isOpened &&
-        (items.length > 0 ? (
-          <div className={classes.options}>
-            {items.map((item) => (
-              <div
-                key={item.id}
-                className={classes.option}
-                onClick={() => optionHandler(item)}
-              >
-                {showItem(item)}
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className={classes.empty}>Нет данных</div>
-        ))}
     </div>
   );
 };

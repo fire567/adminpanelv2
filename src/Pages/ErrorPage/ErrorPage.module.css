@@ -1,0 +1,84 @@
+.error_content{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #F5F6F8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error_code{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 75px;
+  line-height: 88px;
+  letter-spacing: -5.76923px;
+  color: #CACEDB;
+}
+
+.message{
+  font-family: 'Helvetica';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 57px;
+text-align: center;
+letter-spacing: -1px;
+color: var(--font-color)
+}
+
+@media (max-width: 442px) {
+  .message {
+    font-size: 31px;
+  }
+}
+
+.suggestion{
+  font-family: 'Helvetica';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+text-align: center;
+letter-spacing: -0.5px;
+color: #818EA3;
+margin-top: 10px;
+}
+
+@media (max-width: 442px) {
+  .suggestion {
+    font-size: 15px;
+  }
+}
+
+.back_button{
+  width: 95px;
+  height: 29px;
+  background: var(--blue-color);
+  border: 0.5px solid var(--blue-color);
+  box-sizing: border-box;
+  border-radius: 4px;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.back_button:hover {
+  filter: brightness(90%);
+}
+
+.back_button:active {
+  filter: brightness(80%);
+}

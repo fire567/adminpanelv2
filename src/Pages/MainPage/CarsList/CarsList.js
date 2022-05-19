@@ -9,7 +9,7 @@ import { carSections } from '../../../consts';
 import Pagination from '../../../Component/Pgination/Pagination';
 import { getCarsPages } from '../../../Redux/actions';
 
-const CarsList = () => {
+const CarsList = ({ linkName }) => {
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.cars);
   const carsPagesCount = useSelector((state) => state.carsPagesCount);
@@ -34,6 +34,7 @@ const CarsList = () => {
             item.name && item.name,
             item.priceMin && item.priceMin,
             item.priceMax && item.priceMax,
+            item.id,
           ],
         ];
       });
@@ -43,9 +44,15 @@ const CarsList = () => {
 
   return (
     <>
-      <AddItemsHeader />
+      <AddItemsHeader linkName={linkName} />
       {cars && tableItems ? (
-        <CurrentItemsList sections={carSections} tableItems={tableItems} />
+        <CurrentItemsList
+          sections={carSections}
+          tableItems={tableItems}
+          linkName={linkName}
+          match={linkName}
+          pageCount={pageCount}
+        />
       ) : (
         <Loading />
       )}

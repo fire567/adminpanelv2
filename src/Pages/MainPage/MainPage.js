@@ -3,6 +3,8 @@ import Sidebar from '../../Component/Sidebar/Sidebar';
 import Header from '../../Component/Header/Header';
 import Footer from '../../Component/Footer/Footer';
 import Content from '../../Component/Content/Content';
+import ChangeCar from './CarsList/ChangeCar/ChangeCar';
+import AddCar from './CarsList/AddCar/AddCar';
 import classes from './MainPage.module.css';
 import { links } from '../../consts';
 
@@ -22,6 +24,14 @@ const MainPage = ({ match }) => {
     setIsOpened(true);
   };
 
+  const showCarsContent = () => {
+    if (match.params.action === 'change') {
+      return <ChangeCar match={match} />;
+    } else if (match.params.action === 'add') {
+      return <AddCar match={match} />;
+    }
+  };
+
   return (
     <div className={classes.page_form}>
       <Sidebar
@@ -29,22 +39,27 @@ const MainPage = ({ match }) => {
         setCurrentLink={setCurrentLink}
         setIsOpened={setIsOpened}
         isOpened={isOpened}
+        currentLink={currentLink}
       />
       <div className={classes.content_block}>
         <Header />
-        <div className={classes.content}>
-          <Content currentLink={currentLink} />
-          <div
-            className={
-              isOpened ? classes.burger_btn_hidden : classes.burger_btn
-            }
-            onClick={isOpenHandler}
-          >
-            <div className={classes.burger} />
-            <div className={classes.burger} />
-            <div className={classes.burger} />
+        {match.params.action && match.params.name === 'cars-list' ? (
+          showCarsContent()
+        ) : (
+          <div className={classes.content}>
+            <Content currentLink={currentLink} match={match} />
+            <div
+              className={
+                isOpened ? classes.burger_btn_hidden : classes.burger_btn
+              }
+              onClick={isOpenHandler}
+            >
+              <div className={classes.burger} />
+              <div className={classes.burger} />
+              <div className={classes.burger} />
+            </div>
           </div>
-        </div>
+        )}
         <Footer />
       </div>
     </div>
