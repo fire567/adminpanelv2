@@ -1,0 +1,113 @@
+
+.logo_form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  width: 45px;
+  height: 45px;
+  background-image: url("../../assets/logo.svg");
+}
+
+.logo_name{
+  margin-left: 11px;
+  font-family: "Helvetica";
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--font-color);
+}
+
+.login_form{
+  display: flex;
+  margin-top: 16px;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 377px;
+  height: 254px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11), 0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06), 0px 3.5px 35px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+}
+
+.header{
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 17.5px;
+  line-height: 20px;
+  letter-spacing: -0.4375px;
+  color: var(--font-color);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputs_form{
+  height: calc(254px - 58px - 59px);
+  padding: 16px 18px 0px 17px;
+}
+
+.buttons_form{
+  height: 59px;
+}
+
+.buttons_form{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 18px 0px 17px;
+}
+
+.ask_for_request{
+  cursor: pointer;
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 10.5px;
+  line-height: 12px;
+  letter-spacing: -0.18421px;
+  color: var(--blue-color);
+  display: flex;
+  align-items: center;
+  height: 29px;
+}
+
+.login_btn{
+  cursor: pointer;
+  width: 110px;
+  height: 29px;
+  outline: none;
+  background: var(--blue-color);
+  border: 0.5px solid var(--blue-color);
+  box-sizing: border-box;
+  border-radius: 4px;
+  color: white;
+  font-family: 'Helvetica';
+font-weight: 400;
+font-size: 11.5px;
+line-height: 13px;
+letter-spacing: -0.0821429px;
+}
+
+.login_btn:hover {
+  filter: brightness(90%);
+}
+
+.login_btn:active {
+  filter: brightness(80%);
+}
+
+.invalid_data{
+  position: absolute;
+  width: calc(100% - 35px);
+  text-align: center;
+  bottom: 7px;
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 11px;
+  letter-spacing: -0.175439px;
+  color: var(--red-color);
+}

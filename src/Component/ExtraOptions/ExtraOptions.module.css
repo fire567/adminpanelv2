@@ -1,0 +1,71 @@
+.checkbox {
+    display: none;
+  }
+  
+  .opt_extra_form {
+    position: relative;
+    font-family: "Roboto";
+    color: #999999;
+  }
+  
+  .opt_extra_form label {
+    font-family: "Roboto";
+    color: #999999;
+  }
+  
+  .opt_extra_form:not(:first-child) {
+    margin-top: 8px;
+    font-family: "Roboto";
+    color: #999999;
+  }
+  
+  .opt_extra_form label::before {
+    cursor: pointer;
+    color: #999999;
+    content: "";
+    display: inline-block;
+    margin-right: 9px;
+    height: 12px;
+    width: 12px;
+  
+    border: 1px solid;
+  }
+  
+  .opt_extra_form_active{
+    position: relative;
+    font-family: "Roboto"; 
+  }
+  
+  .opt_extra_form_active:not(:first-child) {
+    margin-top: 8px;
+  }
+  
+  .opt_extra_form_active label {
+    font-family: "Roboto";
+    color: #121212;;
+  }
+  
+  .opt_extra_form_active label::before {
+    color: #0ec261;
+    content: "";
+    display: inline-block;
+    margin-right: 9px;
+    height: 12px;
+    width: 12px;
+    cursor: pointer;
+    border: 1px solid;
+  }
+  
+  .opt_extra_form_active label::after {
+    cursor: pointer;
+    content: "";
+    display: inline-block;
+    height: 6px;
+    width: 11px;
+    border-left: 3px solid #121212;
+    border-bottom: 3px solid #121212;
+    position: absolute;
+    z-index: 5;
+    left: 3px;
+    transform: rotate(-45deg);
+  }

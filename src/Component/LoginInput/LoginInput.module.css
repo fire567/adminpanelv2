@@ -1,0 +1,42 @@
+.input_form:not(:first-child){
+  margin-top: 15px;
+}
+
+.label{
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 10.5px;
+  line-height: 12px;
+  letter-spacing: -0.18421px;
+  color: #495057;
+}
+
+.input{
+  margin-top: 8px;
+  background: #FFFFFF;
+  border: 0.5px solid #BECAD6;
+  box-sizing: border-box;
+  border-radius: 3px;
+  height: 29px;
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: -0.192982px;
+  color: var(--font-color);
+  text-indent: 12px;
+  width: 100%;
+  outline: none;
+}
+
+.error_message{
+  margin-top: 3px;
+  font-family: 'Helvetica';
+  position: absolute;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 11px;
+  letter-spacing: -0.175439px;
+  color: var(--red-color);
+}
