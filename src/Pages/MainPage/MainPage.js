@@ -6,8 +6,8 @@ import Content from '../../Component/Content/Content';
 import ChangeCar from './CarsList/ChangeCar/ChangeCar';
 import AddCar from './CarsList/AddCar/AddCar';
 import classes from './MainPage.module.css';
-import { links } from '../../consts';
 import { Redirect } from 'react-router-dom';
+import { links } from '../../consts';
 import ErrorPage from '../ErrorPage/ErrorPage';
 
 const MainPage = ({ match }) => {
