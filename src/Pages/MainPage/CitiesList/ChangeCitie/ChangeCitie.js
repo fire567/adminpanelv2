@@ -32,7 +32,7 @@ const ChangeCitie = ({ match }) => {
 
   useEffect(() => {
     dispatch(getCurrentCity(match.params.id));
-  }, []);
+  }, [match]);
 
   useEffect(() => {
     if (cityInput !== null) {

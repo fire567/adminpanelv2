@@ -27,7 +27,7 @@ const ChangeTariff = ({ match }) => {
   useEffect(() => {
     dispatch(getCurrentRate(match.params.id));
     dispatch(getRateTypeId());
-  }, []);
+  }, [match]);
 
   useEffect(() => {
     if (currentRate && rateTypes) {

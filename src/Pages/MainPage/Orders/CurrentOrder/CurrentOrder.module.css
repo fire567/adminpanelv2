@@ -31,7 +31,18 @@
   height: inherit;
 }
 
+.empty_img{
+  width: 138px;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color);
+  border: 1px solid var(--font-color);
+}
+
 .description{
+  margin-left: 5px;
   height: inherit;
   display: flex;
   flex-direction: column;

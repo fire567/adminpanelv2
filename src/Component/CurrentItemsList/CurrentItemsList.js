@@ -20,6 +20,7 @@ const CurrentItemsList = ({ sections, tableItems, linkName, pageCount }) => {
   const history = useHistory();
   const [isPopUpActive, setIsPopUpActive] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+  const [deleteName, setDeleteName] = useState(null);
 
   useEffect(() => {
     dispatch(getCurrentCar(null));
@@ -69,7 +70,8 @@ const CurrentItemsList = ({ sections, tableItems, linkName, pageCount }) => {
     history.push(`/main-page/${linkName}/change/${id}`);
   };
 
-  const onDeleteHandler = (id) => {
+  const onDeleteHandler = (id, name) => {
+    setDeleteName(name);
     setDeleteId(id);
     setIsPopUpActive(true);
   };
@@ -116,7 +118,9 @@ const CurrentItemsList = ({ sections, tableItems, linkName, pageCount }) => {
                     <div className={classes.button_row}>
                       <button
                         className={classNames(classes.button, classes.delete)}
-                        onClick={() => onDeleteHandler(item[item.length - 1])}
+                        onClick={() =>
+                          onDeleteHandler(item[item.length - 1], item[0])
+                        }
                       >
                         Удалить
                       </button>
@@ -137,6 +141,7 @@ const CurrentItemsList = ({ sections, tableItems, linkName, pageCount }) => {
         linkName={linkName}
         deleteId={deleteId}
         pageCount={pageCount}
+        deleteName={deleteName}
       />
     </>
   );

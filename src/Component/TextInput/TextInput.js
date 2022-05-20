@@ -9,8 +9,11 @@ const TextInput = ({
   currentItem,
   isNeedCheck,
   setIsNeedCheck,
+  inputType,
+  minPrice,
 }) => {
   const [isValid, setIsValid] = useState(true);
+  const [message, setMessage] = useState('');
 
   const inputHandler = (e) => {
     setItem(e.target.value);
@@ -19,9 +22,22 @@ const TextInput = ({
   };
 
   useEffect(() => {
-    if (isNeedCheck && currentItem === '') {
-      setIsValid(false);
-    } else setIsValid(true);
+    if (minPrice) {
+      if (
+        (isNeedCheck && currentItem === '') ||
+        (isNeedCheck && currentItem < minPrice)
+      ) {
+        if (currentItem) {
+          setMessage('Значение меньше минимальной цены');
+        } else setMessage('Введите данные');
+        setIsValid(false);
+      } else setIsValid(true);
+    } else {
+      if (isNeedCheck && currentItem === '') {
+        setIsValid(false);
+        setMessage('Введите данные');
+      } else setIsValid(true);
+    }
   }, [isNeedCheck]);
 
   return (
@@ -29,6 +45,7 @@ const TextInput = ({
       <div className={classes.label}>{label}</div>
       <div className={classes.input_wrapper}>
         <input
+          type={inputType && inputType}
           className={classNames(classes.input, {
             [classes.input_error]: !isValid,
             [classes.input_default]: isValid,
@@ -36,9 +53,7 @@ const TextInput = ({
           defaultValue={defaultItem && defaultItem}
           onChange={(e) => inputHandler(e)}
         />
-        {!isValid && (
-          <div className={classes.error_message}>Введите данные</div>
-        )}
+        {!isValid && <div className={classes.error_message}>{message}</div>}
       </div>
     </div>
   );

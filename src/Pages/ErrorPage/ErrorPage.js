@@ -12,7 +12,7 @@ const ErrorPage = () => {
   return (
     <div className={classes.error_content}>
       <div className={classes.message_form}>
-        <div className={classes.error_code}>500</div>
+        <div className={classes.error_code}>404</div>
         <div className={classes.message}>Что то пошло не так</div>
         <div className={classes.suggestion}>
           Попробуйте перезагрузить страницу

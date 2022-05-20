@@ -15,7 +15,7 @@ const ChangeCarFooter = ({
 
   const acceptBtnHandler = () => {
     setIsNeedCheck(true);
-    if (percents === 100) {
+    if (percents === 100 && changeObj.priceMin < changeObj.priceMax) {
       if (match.params.action === 'change') {
         dispatch(
           changeCar(
@@ -27,6 +27,7 @@ const ChangeCarFooter = ({
             changeObj.categoryId,
             changeObj.colors,
             changeObj.thumbnail,
+            changeObj.number,
             cookies.access
           )
         );
@@ -40,6 +41,7 @@ const ChangeCarFooter = ({
             changeObj.categoryId,
             changeObj.colors,
             changeObj.thumbnail,
+            changeObj.number,
             cookies.access
           )
         );

@@ -7,6 +7,8 @@ import ChangeCar from './CarsList/ChangeCar/ChangeCar';
 import AddCar from './CarsList/AddCar/AddCar';
 import classes from './MainPage.module.css';
 import { links } from '../../consts';
+import { Redirect } from 'react-router-dom';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 const MainPage = ({ match }) => {
   const [currentLink, setCurrentLink] = useState(null);
@@ -30,6 +32,7 @@ const MainPage = ({ match }) => {
     } else if (match.params.action === 'add') {
       return <AddCar match={match} />;
     }
+    return <Redirect to={'/main-page/error'} component={ErrorPage} />;
   };
 
   return (

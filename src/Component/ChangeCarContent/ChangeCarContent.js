@@ -21,6 +21,8 @@ const ChangeCarContent = ({
   setColors,
   isNeedCheck,
   setIsNeedCheck,
+  number,
+  setNumber,
 }) => {
   return (
     <div className={classes.content}>
@@ -62,6 +64,7 @@ const ChangeCarContent = ({
           currentItem={priceMin}
           isNeedCheck={isNeedCheck}
           setIsNeedCheck={setIsNeedCheck}
+          inputType={'number'}
         />
       </div>
       <div className={classes.component_wrapper}>
@@ -76,6 +79,8 @@ const ChangeCarContent = ({
           currentItem={priceMax}
           isNeedCheck={isNeedCheck}
           setIsNeedCheck={setIsNeedCheck}
+          inputType={'number'}
+          minPrice={changeObj.priceMin}
         />
       </div>
       <div className={classes.component_wrapper}>
@@ -90,6 +95,18 @@ const ChangeCarContent = ({
               : null
           }
           isNeedCheck={isNeedCheck}
+        />
+      </div>
+      <div className={classes.component_wrapper}>
+        <TextInput
+          defaultItem={
+            currentCar && currentCar.data.number ? currentCar.data.number : null
+          }
+          label={'Номер'}
+          setItem={setNumber}
+          currentItem={number}
+          isNeedCheck={isNeedCheck}
+          setIsNeedCheck={setIsNeedCheck}
         />
       </div>
       <div className={classes.component_wrapper}>

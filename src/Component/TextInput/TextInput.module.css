@@ -6,6 +6,11 @@
   letter-spacing: -0.18421px;
   color: #121212;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 .input{
   cursor: pointer;

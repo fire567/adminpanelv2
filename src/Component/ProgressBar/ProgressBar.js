@@ -17,8 +17,6 @@ const ProgressBar = ({ currentCar, percents, setThumbnail, changeObj }) => {
     reader.readAsDataURL(file);
   };
 
-  console.log(currentCar.data['categoryId']);
-
   const isCategoryId = () => {
     if (currentCar && currentCar.data['categoryId']) {
       return currentCar.data.categoryId.name;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Orders from '../../../Pages/MainPage/Orders/Orders';
 import CarsList from '../../../Pages/MainPage/CarsList/CarsList';
 import CitiesList from '../../../Pages/MainPage/CitiesList/CitiesList';
@@ -118,7 +118,7 @@ const ContentRouts = ({ match }) => {
           path={'/main-page/orders-status/add/'}
           component={AddOrderStatus}
         />
-        <Route component={ErrorPage} />
+        <Redirect to={'/main-page/error'} component={ErrorPage} />
       </Switch>
     </>
   );

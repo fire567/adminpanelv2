@@ -10,8 +10,10 @@ const ColorPicker = ({ label, defaultItem, setColors }) => {
   };
 
   const addColorHandler = () => {
-    setColors((prev) => [...prev, text]);
-    setText('');
+    if (text) {
+      setColors((prev) => [...prev, text]);
+      setText('');
+    }
   };
 
   const deleteColorHandler = (currentIndex) => {

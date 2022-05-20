@@ -468,7 +468,12 @@ export const getOrderStatusesPages = () => async (dispatch) => {
 export const getCurrentOrder = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/order/${id}`);
+    result = await API.get(`db/order/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -530,7 +535,12 @@ export const changeCurrentOrderStatus =
 export const getCurrentCity = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/city/${id}`);
+    result = await API.get(`db/city/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -600,7 +610,12 @@ export const deleteCity =
 export const getCurrentPoint = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/point/${id}`);
+    result = await API.get(`db/point/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -675,7 +690,12 @@ export const deletePoint =
 export const getCurrentRate = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/rate/${id}`);
+    result = await API.get(`db/rate/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -748,7 +768,12 @@ export const deleteRate =
 export const getCurrentRateType = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/rateType/${id}`);
+    result = await API.get(`db/rateType/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -820,7 +845,12 @@ export const deleteRateType =
 export const getCurrentCarCategory = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/category/${id}`);
+    result = await API.get(`db/category/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -894,7 +924,12 @@ export const deleteCategory =
 export const getCurrentOrderStatus = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/orderStatus/${id}`);
+    result = await API.get(`db/orderStatus/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -964,7 +999,12 @@ export const deleteOrderStatus =
 export const getCurrentCar = (id) => async (dispatch) => {
   let result = {};
   if (id) {
-    result = await API.get(`db/car/${id}`);
+    result = await API.get(`db/car/${id}`).catch((error) => {
+      if (error) {
+        history.push('/adminpanelv2#/adminpanelv2/main-page/error');
+        location.reload();
+      }
+    });
   } else {
     result = { data: null };
   }
@@ -985,6 +1025,7 @@ export const changeCar =
     categoryId,
     colors,
     thumbnail,
+    number,
     token
   ) =>
   async (dispatch) => {
@@ -998,6 +1039,7 @@ export const changeCar =
         categoryId,
         colors,
         thumbnail,
+        number,
       },
       {
         headers: {
@@ -1022,6 +1064,7 @@ export const addCar =
     categoryId,
     colors,
     thumbnail,
+    number,
     token
   ) =>
   async (dispatch) => {
@@ -1035,6 +1078,7 @@ export const addCar =
         categoryId,
         colors,
         thumbnail,
+        number,
       },
       {
         headers: {

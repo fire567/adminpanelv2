@@ -28,7 +28,7 @@ const ChangePoints = ({ match }) => {
   useEffect(() => {
     dispatch(getCurrentPoint(match.params.id));
     dispatch(getCities());
-  }, []);
+  }, [match]);
 
   useEffect(() => {
     if (currentPoint && cities) {

@@ -19,6 +19,7 @@ const DeleteItem = ({
   linkName,
   deleteId,
   pageCount,
+  deleteName,
 }) => {
   const dispatch = useDispatch();
   const [cookie, setCookie] = useCookies('access');
@@ -67,7 +68,7 @@ const DeleteItem = ({
         <div className={classes.label}>
           Вы действительно хотите удалить сущность:
         </div>
-        <div className={classes.label}>{deleteId} ?</div>
+        <div className={classes.label}>{deleteName} ?</div>
         <div className={classes.buttons_form}>
           <button className={classes.accept_btn} onClick={acceptBtnHandler}>
             Принять

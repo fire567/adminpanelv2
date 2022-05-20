@@ -22,7 +22,7 @@ const AddCar = ({ match }) => {
   const [colors, setColors] = useState([]);
   const [percents, setPercents] = useState(0);
   const [thumbnail, setThumbnail] = useState(null);
-  //const [isAcceptBtnTriggered, setIsAcceptBtnTriggered] = useState(false);
+  const [number, setNumber] = useState(null);
   const [isNeedCheck, setIsNeedCheck] = useState(false);
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const AddCar = ({ match }) => {
         categoryId,
         colors,
         thumbnail,
+        number,
       });
   }, [
     priceMin,
@@ -49,6 +50,7 @@ const AddCar = ({ match }) => {
     colors,
     thumbnail,
     categoryId,
+    number,
   ]);
 
   useEffect(() => {
@@ -57,9 +59,9 @@ const AddCar = ({ match }) => {
 
       Object.values(changeObj).map((item) => {
         if (item && !Array.isArray(item)) {
-          count += 14.28;
+          count += 12.5;
         } else if (Array.isArray(item) && item.length > 0) {
-          count += 14.28;
+          count += 12.5;
         }
       });
       setPercents(Math.round(count));
@@ -95,6 +97,8 @@ const AddCar = ({ match }) => {
             setColors={setColors}
             isNeedCheck={isNeedCheck}
             setIsNeedCheck={setIsNeedCheck}
+            number={number}
+            setNumber={setNumber}
           />
           <ChangeCarFooter
             setIsNeedCheck={setIsNeedCheck}

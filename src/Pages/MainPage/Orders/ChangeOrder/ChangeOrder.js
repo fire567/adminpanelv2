@@ -55,7 +55,7 @@ const ChangeOrder = ({ match }) => {
     dispatch(getCurrentOrder(match.params.id));
     dispatch(getOrderStatuses());
     dispatch(getRates());
-  }, []);
+  }, [match]);
 
   const validPointsHandler = (id) => {
     const filteredArr = pointsList.data.filter((point) => {

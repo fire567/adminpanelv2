@@ -3,7 +3,6 @@ import Loading from '../../../../Component/Loading/Loading';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './ChangeCar.module.css';
 import { getCategoriesList, getCurrentCar } from '../../../../Redux/actions';
-import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import ProgressBar from '../../../../Component/ProgressBar/ProgressBar';
 import ChangeCarContent from '../../../../Component/ChangeCarContent/ChangeCarContent';
@@ -23,13 +22,13 @@ const ChangeCar = ({ match }) => {
   const [colors, setColors] = useState([]);
   const [percents, setPercents] = useState(0);
   const [thumbnail, setThumbnail] = useState(null);
-  //const [isAcceptBtnTriggered, setIsAcceptBtnTriggered] = useState(false);
+  const [number, setNumber] = useState(null);
   const [isNeedCheck, setIsNeedCheck] = useState(false);
 
   useEffect(() => {
     dispatch(getCurrentCar(match.params.id));
     dispatch(getCategoriesList());
-  }, []);
+  }, [match]);
 
   useEffect(() => {
     if (currentCar && categoriesList)
@@ -43,6 +42,7 @@ const ChangeCar = ({ match }) => {
           categoryId !== null ? categoryId : currentCar.data.categoryId,
         colors: colors,
         thumbnail: thumbnail !== null ? thumbnail : currentCar.data.thumbnail,
+        number: number != null ? number : currentCar.data.number,
       });
   }, [
     currentCar,
@@ -54,6 +54,7 @@ const ChangeCar = ({ match }) => {
     colors,
     thumbnail,
     categoryId,
+    number,
   ]);
 
   useEffect(() => {
@@ -62,9 +63,9 @@ const ChangeCar = ({ match }) => {
 
       Object.values(changeObj).map((item) => {
         if (item && !Array.isArray(item)) {
-          count += 14.28;
+          count += 12.5;
         } else if (Array.isArray(item) && item.length > 0) {
-          count += 14.28;
+          count += 12.5;
         }
       });
       setPercents(Math.round(count));
@@ -105,6 +106,8 @@ const ChangeCar = ({ match }) => {
             setColors={setColors}
             isNeedCheck={isNeedCheck}
             setIsNeedCheck={setIsNeedCheck}
+            number={number}
+            setNumber={setNumber}
           />
           <ChangeCarFooter
             setIsNeedCheck={setIsNeedCheck}

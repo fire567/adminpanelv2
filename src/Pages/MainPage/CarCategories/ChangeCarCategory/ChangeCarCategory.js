@@ -24,7 +24,7 @@ const ChangeCarCategory = ({ match }) => {
 
   useEffect(() => {
     dispatch(getCurrentCarCategory(match.params.id));
-  }, []);
+  }, [match]);
 
   useEffect(() => {
     if (currentCarCategory) {

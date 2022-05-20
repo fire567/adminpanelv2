@@ -48,15 +48,20 @@ const CurrentOrder = ({ item }) => {
   return (
     <div className={classes.order}>
       <div className={classes.desc_side}>
-        <div
-          className={classes.img}
-          style={{
-            backgroundImage: `url(${item.carId && item.carId.thumbnail.path})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '60%',
-            backgroundPosition: 'center',
-          }}
-        />
+        {item.carId ? (
+          <div
+            className={classes.img}
+            style={{
+              backgroundImage: `url(${item.carId.thumbnail.path})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '60%',
+              backgroundPosition: 'center',
+            }}
+          />
+        ) : (
+          <div className={classes.empty_img}>Нет фото</div>
+        )}
+
         <div className={classes.description}>
           <div className={classes.string}>
             <b>{item.carId ? item.carId.name : 'none'}</b> в{' '}

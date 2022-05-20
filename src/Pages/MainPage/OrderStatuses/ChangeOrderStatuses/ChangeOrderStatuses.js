@@ -23,7 +23,7 @@ const ChangeOrderStatuses = ({ match }) => {
 
   useEffect(() => {
     dispatch(getCurrentOrderStatus(match.params.id));
-  }, []);
+  }, [match]);
 
   useEffect(() => {
     if (currentOrderStatus) {
