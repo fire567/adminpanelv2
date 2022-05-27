@@ -3,6 +3,12 @@
   overflow: scroll;
 }
 
+@media (max-width: 750px) {
+  .content{
+    height: calc(60vh - 59px - 59px);
+  }
+}
+
 .content::-webkit-scrollbar {
   width: 5px;               /* width of the entire scrollbar */
 }

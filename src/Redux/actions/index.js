@@ -1055,6 +1055,13 @@ export const changeCar =
     history.goBack();
   };
 
+export const setIsAlertActive = (isActive) => {
+  return {
+    type: 'IS_ALERTACTIVE',
+    payload: isActive,
+  };
+};
+
 export const addCar =
   (
     priceMin,
@@ -1091,6 +1098,7 @@ export const addCar =
       type: 'POST_CURRENTCARCHANGE',
       payload: result.data,
     });
+    dispatch(setIsAlertActive(true));
     history.goBack();
   };
 

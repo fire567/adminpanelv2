@@ -12,7 +12,6 @@ import classes from './App.module.css';
 const store = createStore(reducers, applyMiddleware(thunk));
 
 const App = () => {
-  console.log(window.location.hash);
   return (
     <HashRouter basename={process.env.PUBLIC_URL} history={history}>
       <Provider store={store}>

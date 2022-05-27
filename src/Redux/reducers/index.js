@@ -29,6 +29,7 @@ import currentOrderStatus from './currentOrderStatus';
 import currentCarCategory from './currentCarCategory';
 import currentCar from './currentCar';
 import categoriesList from './categoriesList';
+import isAlertActive from './isAlertActive';
 
 export const reduceOrders = (state) => state.orders;
 export const reduceOrdersPagesCount = (state) => state.ordersPagesCount;
@@ -70,4 +71,5 @@ export default combineReducers({
   currentCarCategory,
   currentCar,
   categoriesList,
+  isAlertActive,
 });

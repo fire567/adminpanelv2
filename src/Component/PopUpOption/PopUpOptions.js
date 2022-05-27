@@ -56,16 +56,26 @@ const PopUpOptions = ({
         )}
         {isOpened &&
           (items.length > 0 ? (
-            <div className={classes.options}>
-              {items.map((item) => (
-                <div
-                  key={item.id}
-                  className={classes.option}
-                  onClick={() => optionHandler(item)}
-                >
-                  {showItem(item)}
-                </div>
-              ))}
+            <div
+              className={
+                items.length > 7
+                  ? classes.options_oferflow
+                  : classes.options_fit_content
+              }
+            >
+              {items.map(
+                (item) =>
+                  item &&
+                  (item.address || item.name || item.rateTypeId) && (
+                    <div
+                      key={item.id}
+                      className={classes.option}
+                      onClick={() => optionHandler(item)}
+                    >
+                      {showItem(item)}
+                    </div>
+                  )
+              )}
             </div>
           ) : (
             <div className={classes.empty}>Нет данных</div>

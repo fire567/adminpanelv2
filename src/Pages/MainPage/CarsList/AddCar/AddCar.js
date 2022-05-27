@@ -77,6 +77,8 @@ const AddCar = ({ match }) => {
           percents={percents}
           setThumbnail={setThumbnail}
           changeObj={changeObj}
+          isNeedCheck={isNeedCheck}
+          setIsNeedCheck={setIsNeedCheck}
         />
         <div className={classes.content_side}>
           <div className={classes.content_header}>Настройки автомобиля</div>

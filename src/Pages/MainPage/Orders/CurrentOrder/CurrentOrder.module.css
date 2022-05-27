@@ -210,6 +210,7 @@ b{
 }
 
 .button{
+  cursor: pointer;
   width: 71px;
   height: 24px;
   background: #FFFFFF;
@@ -229,6 +230,18 @@ b{
 @media (max-width: 750px) {
   .button{
     width: -webkit-fill-available;
+  }
+}
+
+.accept_active{
+  background-color: green;
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .accept_active{
+    border-radius: 0;
   }
 }
 
@@ -272,6 +285,23 @@ b{
     transform: rotate(45deg);
 }
 
+.accept_icon_active{
+  position: absolute;
+    align-items: center;
+    top: 5px;
+    left: 8px;
+    width: 4px;
+    height: 8px;
+    transform: rotate(45deg);
+    border: solid white;
+    border-width: 0px 1px 1px 0px;
+}
+
+.decline_active{
+  background-color: var(--red-color);
+  color: white;
+}
+
 .decline_icon {
   position: absolute;
   left: 4px;
@@ -290,6 +320,27 @@ b{
   transform: rotate(45deg);
   }
   .decline_icon:after {
+  transform: rotate(-45deg);
+  }
+
+.decline_icon_active{
+  position: absolute;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  }
+  .decline_icon_active:before, .decline_icon_active:after {
+  position: absolute;
+  left: 4px;
+  content: ' ';
+  height: 8px;
+  width: 1px;
+  background-color: white;
+  }
+  .decline_icon_active:before {
+  transform: rotate(45deg);
+  }
+  .decline_icon_active:after {
   transform: rotate(-45deg);
   }
 

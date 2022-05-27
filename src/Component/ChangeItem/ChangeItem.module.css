@@ -6,6 +6,12 @@
     grid-template-columns: 210px 210px
 }
 
+@media (max-width: 750px) {
+    .wrapper{
+      height: calc(60vh - 59px - 59px);
+    }
+  }
+
 @media (max-width: 500px) {
     .wrapper{
         overflow-y: scroll;

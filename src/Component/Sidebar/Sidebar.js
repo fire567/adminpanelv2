@@ -16,6 +16,7 @@ const Sidebar = ({
 
   const linkHandler = (link) => {
     setCurrentLink(link.name);
+    setIsOpened(false);
     history.push(`/main-page/${link.path}`);
   };
 

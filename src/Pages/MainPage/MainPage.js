@@ -9,6 +9,7 @@ import classes from './MainPage.module.css';
 import { Redirect } from 'react-router-dom';
 import { links } from '../../consts';
 import ErrorPage from '../ErrorPage/ErrorPage';
+import Alert from '../../Component/Alert/Alert';
 
 const MainPage = ({ match }) => {
   const [currentLink, setCurrentLink] = useState(null);
@@ -44,6 +45,7 @@ const MainPage = ({ match }) => {
         isOpened={isOpened}
         currentLink={currentLink}
       />
+      <Alert />
       <div className={classes.content_block}>
         <Header />
         {match.params.action && match.params.name === 'cars-list' ? (

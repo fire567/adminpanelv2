@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './ProgressBar.module.css';
 
-const ProgressBar = ({ currentCar, percents, setThumbnail, changeObj }) => {
+const ProgressBar = ({
+  currentCar,
+  percents,
+  setThumbnail,
+  changeObj,
+  isNeedCheck,
+  setIsNeedCheck,
+}) => {
+  const [isValid, setIsValid] = useState(true);
   const picHandler = (e) => {
+    setIsValid(true);
+    setIsNeedCheck(false);
     let file = e.target.files[0];
-    console.log(file);
     var reader = new FileReader();
     reader.onloadend = function () {
       setThumbnail({
@@ -16,6 +25,16 @@ const ProgressBar = ({ currentCar, percents, setThumbnail, changeObj }) => {
     };
     reader.readAsDataURL(file);
   };
+
+  useEffect(() => {
+    if (isNeedCheck) {
+      if (!changeObj.thumbnail) {
+        setIsValid(false);
+      } else {
+        setIsValid(true);
+      }
+    }
+  }, [isNeedCheck]);
 
   const isCategoryId = () => {
     if (currentCar && currentCar.data['categoryId']) {
@@ -40,7 +59,11 @@ const ProgressBar = ({ currentCar, percents, setThumbnail, changeObj }) => {
           backgroundSize: '60%',
           backgroundPosition: 'center',
         }}
-      />
+      >
+        {!isValid && (
+          <div className={classes.error_message}>Добавьте фотографию</div>
+        )}
+      </div>
       <div className={classes.car_name}>
         {currentCar && currentCar.data.name
           ? currentCar.data.name

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useState } from 'react';
 import Moment from 'react-moment';
 import { extra } from '../../../../consts';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +10,16 @@ import { useDispatch } from 'react-redux';
 const CurrentOrder = ({ item }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [isActive, setIsActive] = useState(
+    item.orderStatusId && item.orderStatusId.id === '6278c4ba9535e90010bfaf36'
+      ? item.orderStatusId.id
+      : null
+  );
+  const [isDecline, setIsDecline] = useState(
+    item.orderStatusId && item.orderStatusId.id === '5e26a1f5099b810b946c5d8c'
+      ? item.orderStatusId.id
+      : null
+  );
 
   const checkboxStyle = (extra) => {
     if (extra.id === 0 && item.isFullTank === true) {
@@ -28,6 +38,8 @@ const CurrentOrder = ({ item }) => {
   };
 
   const changeStatusToCancel = () => {
+    setIsActive(null);
+    setIsDecline('5e26a1f5099b810b946c5d8c');
     dispatch(
       changeCurrentOrderStatus(item.id, {
         name: 'Отмененные',
@@ -37,6 +49,8 @@ const CurrentOrder = ({ item }) => {
   };
 
   const changeStatusToDone = () => {
+    setIsActive('6278c4ba9535e90010bfaf36');
+    setIsDecline(null);
     dispatch(
       changeCurrentOrderStatus(item.id, {
         name: 'Завершенные',
@@ -44,6 +58,8 @@ const CurrentOrder = ({ item }) => {
       })
     );
   };
+
+  //console.log(item.orderStatusId.id);
 
   return (
     <div className={classes.order}>
@@ -88,17 +104,41 @@ const CurrentOrder = ({ item }) => {
       <div className={classes.price}>{item.price} ₽</div>
       <div className={classes.buttons}>
         <button
-          className={classNames(classes.button, classes.accept)}
+          className={classNames(classes.button, {
+            [classes.accept_active]:
+              isActive && isActive === '6278c4ba9535e90010bfaf36',
+            [classes.accept]:
+              isActive && isActive !== '6278c4ba9535e90010bfaf36',
+            [classes.accept]: !isActive,
+          })}
           onClick={changeStatusToDone}
         >
-          <div className={classes.accept_icon} />
+          <div
+            className={
+              isActive && isActive === '6278c4ba9535e90010bfaf36'
+                ? classes.accept_icon_active
+                : classes.accept_icon
+            }
+          />
           Готово
         </button>
         <button
-          className={classNames(classes.button, classes.decline)}
+          className={classNames(classes.button, {
+            [classes.decline_active]:
+              isDecline && isDecline === '5e26a1f5099b810b946c5d8c',
+            [classes.decline]:
+              isDecline && isDecline !== '5e26a1f5099b810b946c5d8c',
+            [classes.decline]: !isDecline,
+          })}
           onClick={changeStatusToCancel}
         >
-          <div className={classes.decline_icon} />
+          <div
+            className={
+              isDecline && isDecline === '5e26a1f5099b810b946c5d8c'
+                ? classes.decline_icon_active
+                : classes.decline_icon
+            }
+          />
           Отмена
         </button>
         <button
