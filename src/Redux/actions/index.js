@@ -1121,3 +1121,10 @@ export const deleteCar =
       history.goBack();
     }
   };
+
+export const setOrdersCurrentPage = (page) => {
+  return {
+    type: 'ORDERS_CURRENTPAGE',
+    payload: page,
+  };
+};

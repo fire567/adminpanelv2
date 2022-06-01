@@ -8,6 +8,7 @@ import {
   getCities,
   getRateTypeId,
   getRates,
+  setOrdersCurrentPage,
 } from '../../../Redux/actions';
 import CurrentOrder from './CurrentOrder/CurrentOrder';
 import { useCookies } from 'react-cookie';
@@ -19,6 +20,7 @@ import {
   reduceRateTypes,
   reduceRates,
   reduceOrders,
+  reducerOrdersCurrentPage,
 } from '../../../Redux/reducers';
 
 const Orders = () => {
@@ -30,10 +32,16 @@ const Orders = () => {
     cities: reduceCities(state),
     rateTypes: reduceRateTypes(state),
     rates: reduceRates(state),
+    ordersCurrentPage: reducerOrdersCurrentPage(state),
   });
-  const { orders, ordersPagesCount, cities, rateTypes, rates } =
-    useSelector(mapState);
-  const [pageCount, setPageCount] = useState(0);
+  const {
+    orders,
+    ordersPagesCount,
+    cities,
+    rateTypes,
+    rates,
+    ordersCurrentPage,
+  } = useSelector(mapState);
   const [odrersFilter, setOrdersFilter] = useState(null);
   const [citiesFilter, setCitiesFilter] = useState(null);
   const [rateTypeFilter, setRateTypeFilter] = useState(null);
@@ -45,12 +53,12 @@ const Orders = () => {
     dispatch(
       getOrders(
         cookies.access,
-        pageCount,
+        ordersCurrentPage,
         citiesFilter,
         rateTypeFilter && rateFilter
       )
     );
-  }, [pageCount]);
+  }, [ordersCurrentPage]);
 
   useEffect(() => {
     dispatch(getCities());
@@ -79,8 +87,7 @@ const Orders = () => {
   useEffect(() => {
     setCitiesFilter(null);
     setRateFilter(null);
-    setPageCount(1);
-    dispatch(getOrders(cookies.access, pageCount, null, null));
+    dispatch(getOrders(cookies.access, ordersCurrentPage, null, null));
   }, [isDecline]);
 
   useEffect(() => {
@@ -104,7 +111,7 @@ const Orders = () => {
     dispatch(
       getOrders(
         cookies.access,
-        pageCount,
+        ordersCurrentPage,
         citiesFilter,
         rateTypeFilter && ratesFilter[0].id
       )
@@ -117,7 +124,6 @@ const Orders = () => {
         items={odrersFilter}
         setIsApplied={setIsApplied}
         isApplied={isApplied}
-        setPageCount={setPageCount}
         setIsDecline={setIsDecline}
         isDecline={isDecline}
       />
@@ -132,8 +138,8 @@ const Orders = () => {
       )}
       <Pagination
         count={ordersPagesCount ? ordersPagesCount / 4 : 0}
-        setPageCount={setPageCount}
-        pageCount={pageCount}
+        setPageCount={setOrdersCurrentPage}
+        orderPageCount={ordersCurrentPage}
         pagesCount={ordersPagesCount}
         deleteItem={getOrders(null)}
       />
