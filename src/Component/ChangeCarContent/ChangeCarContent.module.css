@@ -1,0 +1,18 @@
+.content{
+  display: grid;
+  height: calc(386px - 100px);
+  align-content: space-around;
+    justify-content: space-around;
+    grid-template-columns: 210px 210px
+}
+
+@media (max-width: 560px) {
+  .content{
+    grid-template-columns: 210px;
+   height: fit-content;
+   margin: 10px 0;
+  }
+  .component_wrapper{
+    margin-top: 15px;
+  }
+}

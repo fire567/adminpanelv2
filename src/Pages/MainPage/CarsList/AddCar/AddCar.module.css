@@ -1,0 +1,100 @@
+.cars_content{
+  display: flex;
+  height: 100vh;
+  justify-content: space-between;
+  margin: 30px 25px 0px 32px;
+}
+
+@media (max-width: 863px) {
+  .cars_content{
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: fit-content;
+  }
+}
+
+.content_side{
+  width: 750px;
+  height: 386px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(90, 97, 105, 0.12);
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 1445px) {
+  .content_side{
+    width: 650px;
+  }
+}
+
+@media (max-width: 1346px) {
+  .content_side{
+    width: 550px;
+  }
+}
+
+@media (max-width: 1256px) {
+  .content_side{
+    width: 500px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .content_side{
+    width: 750px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .content_side{
+    width: 600px;
+  }
+}
+
+@media (max-width: 1070px) {
+  .content_side{
+    width: 450px;
+  }
+}
+
+@media (max-width: 863px) {
+  .content_side{
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .content_side{
+    width: 80vw;
+    height: fit-content;
+  }
+}
+
+.header{
+  margin-left: 32px;
+  margin-top: 30px;
+  font-family: 'Helvetica';
+  font-weight: 400;
+  font-size: 29px;
+  line-height: 33px;
+  letter-spacing: -0.725px;
+  color: var(--font-color);
+}
+
+.content_header{
+  height: 50px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 17.5px;
+  line-height: 21px;
+  letter-spacing: -0.4375px;
+  color: var(--font-color);
+  display: flex;
+  align-items: center;
+  text-indent: 18px;
+}
