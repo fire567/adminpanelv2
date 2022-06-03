@@ -282,7 +282,7 @@ export const getPointsList = () => async (dispatch) => {
 };
 
 export const getPoints = (page) => async (dispatch) => {
-  if (page === null) {
+  if (page === null && page !== 0) {
     dispatch({
       type: 'GET_POINTS',
       payload: null,

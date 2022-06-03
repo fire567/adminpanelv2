@@ -12,11 +12,11 @@ const Pagination = ({
 }) => {
   const dispatch = useDispatch();
 
-  console.log(orderPageCount);
-
   const changePageHandler = (e) => {
-    dispatch(deleteItem);
-    if (orderPageCount || orderPageCount === 0) {
+    if (
+      orderPageCount !== undefined &&
+      (orderPageCount || orderPageCount === 0)
+    ) {
       dispatch(setPageCount(e.selected));
     } else {
       setPageCount(e.selected);
@@ -28,7 +28,9 @@ const Pagination = ({
       {pagesCount && (
         <ReactPaginate
           pageCount={count}
-          initialPage={orderPageCount ? orderPageCount : 0}
+          initialPage={
+            orderPageCount !== undefined && orderPageCount ? orderPageCount : 0
+          }
           className={classes.pagination_form}
           pageClassName={classes.pageClassName}
           previousClassName={classes.previousClassName}

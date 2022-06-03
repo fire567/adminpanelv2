@@ -15,6 +15,7 @@ const PointsList = ({ linkName }) => {
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
+    dispatch(getPoints(null));
     dispatch(getPointsPages());
   }, []);
 
@@ -53,7 +54,6 @@ const PointsList = ({ linkName }) => {
         setPageCount={setPageCount}
         pageCount={pageCount}
         pagesCount={pointsPagesCount}
-        deleteItem={getPoints(null)}
       />
     </>
   );
